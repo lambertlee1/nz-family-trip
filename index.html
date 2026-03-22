@@ -34,9 +34,9 @@
         .daily-node-marker { background-color: #ef4444; color: white; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
         .day-selector-btn.active { background-color: #3b82f6; color: white; border-color: #3b82f6; }
         
-        .ai-btn { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; transition: all 0.2s; }
+        .ai-btn { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; transition: all 0.2s; border-radius: 0.75rem; font-weight: 700; }
         .ai-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-        .ai-box { background-color: #f5f3ff; border: 1px solid #ede9fe; border-radius: 0.5rem; padding: 1rem; font-size: 0.875rem; color: #4c1d95; margin-top: 1rem; line-height: 1.6; }
+        .ai-box { background-color: #f5f3ff; border: 1px solid #ede9fe; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.875rem; color: #4c1d95; margin-top: 1rem; line-height: 1.7; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
         
         .spinner { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid white; width: 16px; height: 16px; animation: spin 1s linear infinite; display: inline-block; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -157,17 +157,17 @@
                 <div class="bg-white rounded-2xl shadow-md border-t-4 border-blue-500 p-6 flex flex-col">
                     <h3 class="font-bold text-blue-900 text-lg mb-2">紐家1：基督城</h3>
                     <p class="text-blue-600 font-bold text-sm mb-4">共 6 晚 (首尾緩衝)</p>
-                    <p class="text-slate-600 text-xs leading-relaxed">位於南島大門，負責抵達後的大補給與離開前的伴手禮採買。空間寬敞，適合全家重整行囊。</p>
+                    <p class="text-slate-600 text-xs leading-relaxed">位於南島大門，負責抵達後的大補給與離開前的伴手禮採買。空間寬敞，適合全家聚會。</p>
                 </div>
                 <div class="bg-white rounded-2xl shadow-md border-t-4 border-indigo-500 p-6 flex flex-col">
                     <h3 class="font-bold text-indigo-900 text-lg mb-2">紐家2：蒂卡波</h3>
                     <p class="text-indigo-600 font-bold text-sm mb-4">連住 2 晚 (冰川探秘)</p>
-                    <p class="text-slate-600 text-xs leading-relaxed">夢幻星空基地。在此可以放慢步調，專注於庫克山冰川與溫泉樂趣。</p>
+                    <p class="text-slate-600 text-xs leading-relaxed">星空基地。在此可以放慢步調，專注於庫克山冰川與溫泉樂趣。</p>
                 </div>
                 <div class="bg-white rounded-2xl shadow-md border-t-4 border-cyan-500 p-6 flex flex-col">
                     <h3 class="font-bold text-cyan-900 text-lg mb-2">紐家3：瓦納卡</h3>
                     <p class="text-cyan-600 font-bold text-sm mb-4">霸氣連住 6 晚 (深度慢活)</p>
-                    <p class="text-slate-600 text-xs leading-relaxed">此行的核心靈魂。免去頻繁搬家的困擾，以此放射狀前往雪場與皇后鎮。</p>
+                    <p class="text-slate-600 text-xs leading-relaxed">此行的核心基地。免去搬家困擾，以此放射狀前往雪場與皇后鎮。</p>
                 </div>
             </div>
         </section>
@@ -178,7 +178,7 @@
              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-white rounded-2xl shadow p-5 border border-slate-100">
                     <h3 class="font-bold text-slate-800 mb-2">🐑 Walter Peak 剪羊毛</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed">搭乘恩斯羅號百年蒸汽船，在湖上悠哉航行至對岸農場餵食小動物。</p>
+                    <p class="text-xs text-slate-500 leading-relaxed">搭乘百年蒸汽船，在湖上悠哉航行至對岸農場餵食小動物。</p>
                 </div>
                 <div class="bg-white rounded-2xl shadow p-5 border border-slate-100">
                     <h3 class="font-bold text-slate-800 mb-2">🐕 哈士奇狗拉雪橇</h3>
@@ -186,7 +186,7 @@
                 </div>
                 <div class="bg-white rounded-2xl shadow p-5 border border-slate-100">
                     <h3 class="font-bold text-slate-800 mb-2">🎿 Cardrona 安全滑雪</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed">特別為兒童設計的封閉式魔毯區，搭乘官方接駁車上山，既溫暖又安全。</p>
+                    <p class="text-xs text-slate-500 leading-relaxed">特別為兒童設計的封閉式魔毯區，安全又溫暖。</p>
                 </div>
              </div>
         </section>
@@ -212,7 +212,7 @@
     </main>
 
     <script>
-        // 🔑 少爺的專屬 API 金鑰
+        // 🔑 您的專屬 API 金鑰
         const apiKey = "AIzaSyBinuUFRQrAkrlONyRKWazl1hA-AyF8mKE"; 
 
         const locs = {
@@ -224,21 +224,21 @@
         };
 
         const itineraryData = [
-            { day: "Day 1", date: "8/8", loc: "基督城 (CHC)", act: "14:25 抵達。取車後前往大型 Pak'nSave 超市完成首日大補給，適應溫差。", stay: "紐家1: 基督城", dist: "15 km", timeEst: "30分", title: "抵達大採買", temp: "🌡️ 基準", weather: "第一天保暖。", path: [locs.chc] },
-            { day: "Day 2", date: "8/9", loc: "Castle Hill", act: "【巨石陣探險】大自然的巨石陣躲貓貓。下午參觀皇家空軍博物館，室內看戰機超壯觀。", stay: "紐家1: 基督城", dist: "190 km", timeEst: "2.5h", title: "巨石與飛機", temp: "⬇️ 降 3~5°C", weather: "注意岩石濕滑。", path: [locs.chc, locs.castleHill, locs.chc] },
-            { day: "Day 3", date: "8/10", loc: "蒂卡波 (Tekapo)", act: "下午 Tekapo Springs 玩雪地 Tubing 甜甜圈，隨後泡暖心溫泉。", stay: "紐家2: 蒂卡波", dist: "230 km", timeEst: "3h", title: "雪盆與溫泉樂", temp: "⬇️ 降 4~6°C", weather: "夜間路面黑冰。", path: [locs.chc, locs.tekapo] },
-            { day: "Day 4", date: "8/11", loc: "庫克山 (Mt Cook)", act: "走平緩的 Hooker Valley 步道吊橋。孩子可以觸摸湖邊透明浮冰。", stay: "紐家2: 蒂卡波", dist: "210 km", timeEst: "2.5h", title: "冰河與吊橋", temp: "⬇️ 降 5~8°C", weather: "防風必備。", path: [locs.tekapo, locs.mtCook, locs.tekapo] },
-            { day: "Day 5", date: "8/12", loc: "瓦納卡 (Wanaka)", act: "進駐最核心據點紐家3。下午特別閒置行程，全家於別墅徹底放鬆。", stay: "紐家3: 瓦納卡", dist: "200 km", timeEst: "2.5h", title: "別墅靜心閒置", temp: "⬇️ 降 2~4°C", weather: "隘口易降雪。", path: [locs.tekapo, locs.wanaka] },
-            { day: "Day 6", date: "8/13", loc: "Snow Farm", act: "【狗拉雪橇】預約 Underdog NZ 哈士奇體驗，全家馳騁在安靜的雪原。", stay: "紐家3: 瓦納卡", dist: "70 km", timeEst: "1.5h", title: "哈士奇狂歡", temp: "⬇️ 降 5~8°C", weather: "雪場風大。", path: [locs.wanaka, locs.snowFarm, locs.wanaka] },
-            { day: "Day 7", date: "8/14", loc: "皇后鎮 (QT)", act: "搭乘百年 TSS 復古蒸汽船，前往農場餵小羊，觀賞剪羊毛秀。", stay: "紐家3: 瓦納卡", dist: "140 km", timeEst: "2.5h", title: "百年蒸汽船", temp: "⬇️ 降 2~4°C", weather: "船上風強。", path: [locs.wanaka, locs.qt, locs.wanaka] },
-            { day: "Day 8", date: "8/15", loc: "卡德羅納 (Cardrona)", act: "【安全滑雪】停山下搭接駁車上山。在封閉魔毯區帶孩子安心學滑雪。", stay: "紐家3: 瓦納卡", dist: "70 km", timeEst: "1.5h", title: "滑雪初體驗", temp: "⬇️ 降 6~10°C", weather: "保暖等級最高。", path: [locs.wanaka, locs.cardrona, locs.wanaka] },
-            { day: "Day 9", date: "8/16", loc: "皇后鎮 (QT)", act: "開車上 Deer Park Heights 坐在車內餵鹿。逛淘金歷史箭鎮。", stay: "紐家3: 瓦納卡", dist: "160 km", timeEst: "3h", title: "車窗餵鹿趣", temp: "⬇️ 降 2~4°C", weather: "開窗冷風。", path: [locs.wanaka, locs.deerPark, locs.arrowtown, locs.wanaka] },
-            { day: "Day 10", date: "8/17", loc: "瓦納卡 (Wanaka)", act: "湖畔漫步看孤樹。逛薰衣草農場看羊駝，品嚐紫色冰淇淋。", stay: "紐家3: 瓦納卡", dist: "鎮內", timeEst: "極短", title: "冰淇淋與羊駝", temp: "⬇️ 降 2~4°C", weather: "湖邊濕冷。", path: [locs.wanaka] },
-            { day: "Day 11", date: "8/18", loc: "移動/基督城", act: "【大返程】告別湖區。中途在 Geraldine 休息站享用咖啡甜點。", stay: "紐家1: 基督城", dist: "430 km", timeEst: "5.5h", title: "長途返航", temp: "⬆️ 漸回溫", weather: "長途駕駛換手。", path: [locs.wanaka, locs.tekapo, locs.chc] },
-            { day: "Day 12", date: "8/19", loc: "阿卡羅阿 (Akaroa)", act: "法式風情小鎮。海景下與綿密羊駝合影。逛英倫風格商店。", stay: "紐家1: 基督城", dist: "160 km", timeEst: "3h", title: "海景羊駝", temp: "↔️ 相近", weather: "海風微寒。", path: [locs.chc, locs.akaroa, locs.chc] },
-            { day: "Day 13", date: "8/20", loc: "基督城市區", act: "Margaret Mahy 超大溜滑梯。Willowbank 野生動物園看奇異鳥。", stay: "紐家1: 基督城", dist: "20 km", timeEst: "40分", title: "終極放電日", temp: "🌡️ 基準", weather: "適合跑跳。", path: [locs.chc] },
-            { day: "Day 14", date: "8/21", loc: "最後採買", act: "市區伴手禮最後衝刺、全家整理行李，慶祝旅程圓滿。", stay: "紐家1: 基督城", dist: "15 km", timeEst: "30分", title: "打包與慶祝", temp: "🌡️ 基準", weather: "放鬆心情。", path: [locs.chc] },
-            { day: "Day 15", date: "8/22", loc: "歸途", act: "歸還車輛。06:45 班機平安返回家園，結束美妙旅程。", stay: "機上", dist: "15 km", timeEst: "30分", title: "平安賦歸", temp: "✈️ 溫暖", weather: "清晨極凍。", path: [locs.chc] }
+            { day: "Day 1", date: "8/8", loc: "基督城 (CHC)", act: "14:25 抵達。取車後前往大型 Pak'nSave 超市完成大補給。", stay: "紐家1: 基督城", dist: "15 km", timeEst: "30分", title: "抵達大採買", temp: "🌡️ 基準", weather: "第一天保暖。", path: [locs.chc] },
+            { day: "Day 2", date: "8/9", loc: "Castle Hill", act: "【巨石陣】大自然巨石陣躲貓貓。下午皇家空軍博物館看戰機。", stay: "紐家1: 基督城", dist: "190 km", timeEst: "2.5h", title: "奇幻巨石攀爬", temp: "⬇️ 降 3~5°C", weather: "注意岩石濕滑。", path: [locs.chc, locs.castleHill, locs.chc] },
+            { day: "Day 3", date: "8/10", loc: "蒂卡波 (Tekapo)", act: "前往紐家2。下午 Tekapo Springs 雪地 Tubing 與溫泉。", stay: "紐家2: 蒂卡波", dist: "230 km", timeEst: "3h", title: "星空小鎮溫泉", temp: "⬇️ 降 4~6°C", weather: "路面黑冰。", path: [locs.chc, locs.tekapo] },
+            { day: "Day 4", date: "8/11", loc: "庫克山 (Mt Cook)", act: "走 Hooker Valley 步道吊橋，觸摸冰河浮冰。", stay: "紐家2: 蒂卡波", dist: "210 km", timeEst: "2.5h", title: "觸摸冰川浮冰", temp: "⬇️ 降 5~8°C", weather: "防風必備。", path: [locs.tekapo, locs.mtCook, locs.tekapo] },
+            { day: "Day 5", date: "8/12", loc: "瓦納卡 (Wanaka)", act: "進駐紐家3。下午特別閒置行程，別墅休息放鬆。", stay: "紐家3: 瓦納卡", dist: "200 km", timeEst: "2.5h", title: "別墅靜心閒置", temp: "⬇️ 降 2~4°C", weather: "隘口易降雪。", path: [locs.tekapo, locs.wanaka] },
+            { day: "Day 6", date: "8/13", loc: "Snow Farm", act: "【狗拉雪橇】哈士奇體驗，與超萌狗狗們合照。", stay: "紐家3: 瓦納卡", dist: "70 km", timeEst: "1.5h", title: "哈士奇狂歡", temp: "⬇️ 降 5~8°C", weather: "雪場風大。", path: [locs.wanaka, locs.snowFarm, locs.wanaka] },
+            { day: "Day 7", date: "8/14", loc: "皇后鎮 (QT)", act: "搭百年蒸汽船至對岸農場餵小羊、看剪羊毛秀。", stay: "紐家3: 瓦納卡", dist: "140 km", timeEst: "2.5h", title: "百年蒸汽船", temp: "⬇️ 降 2~4°C", weather: "船上風強。", path: [locs.wanaka, locs.qt, locs.wanaka] },
+            { day: "Day 8", date: "8/15", loc: "卡德羅納 (Cardrona)", act: "【安全滑雪】接駁巴士上山。封閉魔毯區帶孩滑雪。", stay: "紐家3: 瓦納卡", dist: "70 km", timeEst: "1.5h", title: "滑雪初體驗", temp: "⬇️ 降 6~10°C", weather: "保暖最高等級。", path: [locs.wanaka, locs.cardrona, locs.wanaka] },
+            { day: "Day 9", date: "8/16", loc: "皇后鎮 (QT)", act: "開車上 Deer Park Heights 坐在車內餵鹿。逛箭鎮。", stay: "紐家3: 瓦納卡", dist: "160 km", timeEst: "3h", title: "車窗餵鹿趣", temp: "⬇️ 降 2~4°C", weather: "開窗冷風。", path: [locs.wanaka, locs.deerPark, locs.arrowtown, locs.wanaka] },
+            { day: "Day 10", date: "8/17", loc: "瓦納卡 (Wanaka)", act: "湖畔看孤樹。逛薰衣草農場看羊駝、吃冰淇淋。", stay: "紐家3: 瓦納卡", dist: "鎮內", timeEst: "極短", title: "冰淇淋與羊駝", temp: "⬇️ 降 2~4°C", weather: "湖邊濕冷。", path: [locs.wanaka] },
+            { day: "Day 11", date: "8/18", loc: "移動/基督城", act: "【大返程】中途在 Geraldine 休息站享用咖啡甜點。", stay: "紐家1: 基督城", dist: "430 km", timeEst: "5.5h", title: "長途返航", temp: "⬆️ 漸回溫", weather: "長途駕駛換手。", path: [locs.wanaka, locs.tekapo, locs.chc] },
+            { day: "Day 12", date: "8/19", loc: "阿卡羅阿 (Akaroa)", act: "法式風情小鎮。海景下與綿密羊駝合影。", stay: "紐家1: 基督城", dist: "160 km", timeEst: "3h", title: "海景羊駝", temp: "↔️ 相近", weather: "海風微寒。", path: [locs.chc, locs.akaroa, locs.chc] },
+            { day: "Day 13", date: "8/20", loc: "基督城市區", act: "超大溜滑梯放電。野生動物園看奇異鳥。", stay: "紐家1: 基督城", dist: "20 km", timeEst: "40分", title: "終極放電日", temp: "🌡️ 基準", weather: "適合跑跳。", path: [locs.chc] },
+            { day: "Day 14", date: "8/21", loc: "最後採買", act: "市區伴手禮最後衝刺、整理行李、慶祝圓滿。", stay: "紐家1: 基督城", dist: "15 km", timeEst: "30分", title: "打包與慶祝", temp: "🌡️ 基準", weather: "放鬆心情。", path: [locs.chc] },
+            { day: "Day 15", date: "8/22", loc: "歸途", act: "機場還車。班機 06:45 準時起飛返回家園。", stay: "機上", dist: "15 km", timeEst: "30分", title: "平安賦歸", temp: "✈️ 溫暖", weather: "清晨極凍。", path: [locs.chc] }
         ];
 
         let overviewMap = null, dailyMap = null, dailyLayerGroup = null, myChart = null, currentDayIndex = 0;
@@ -255,17 +255,16 @@
             const targetSec = document.getElementById('sec-' + tabId);
             if(targetSec) targetSec.classList.replace('hidden', 'block');
             
-            // 💡 解決地圖灰色區塊：強制更新大小
             if(tabId === 'map') { 
                 if(!overviewMap) initOverviewMap();
-                setTimeout(() => overviewMap.invalidateSize(), 150); 
+                setTimeout(() => overviewMap.invalidateSize(), 200); 
             }
             if(tabId === 'daily') { 
                 if(!dailyMap) initDailyMap();
                 setTimeout(() => {
                     dailyMap.invalidateSize();
                     renderDailyMap(currentDayIndex);
-                }, 150); 
+                }, 200); 
             }
             if(tabId === 'dashboard' && myChart) myChart.resize();
         }
@@ -300,7 +299,7 @@
         }
 
         async function callGeminiAPI(prompt, systemPrompt) {
-            // 修正：必須使用反引號 (Backticks) 才能正確帶入金鑰
+            // ✨ 語法修正：使用反引號 (Backticks) 確保變數生效
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             try {
                 const response = await fetch(url, { 
@@ -314,13 +313,13 @@
                 
                 if (!response.ok) {
                     const err = await response.json();
-                    return `⚠️ AI 發生錯誤 (${response.status})：${err.error?.message || "請檢查金鑰是否有網址限制。"}`;
+                    return `⚠️ AI 錯誤 (${response.status})：${err.error?.message || "請求失敗。"}`;
                 }
 
                 const data = await response.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "AI 目前沒有回應，請重新嘗試。";
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "AI 忙碌中。";
             } catch (e) { 
-                return `⚠️ 連接失敗：請檢查網路或 API Key。錯誤：${e.message}`; 
+                return `⚠️ 連接失敗。錯誤：${e.message}`; 
             }
         }
 
@@ -364,7 +363,7 @@
             const btn = document.getElementById('ai-story-btn');
             const out = document.getElementById('ai-story-output');
             btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> 正在編織故事...`;
-            const res = await callGeminiAPI(`寫一篇專屬少爺家族(11人，含4個幼童)的溫馨床邊故事，靈感來自：${itineraryData[currentDayIndex].act}`, "您是溫柔說書人模式，用繁體中文書寫。");
+            const res = await callGeminiAPI(`寫一篇專屬少爺家族(11人，含4個幼童)的溫馨床邊故事，靈感來自：${itineraryData[currentDayIndex].act}`, "您是溫柔說書人，請用繁體中文書寫。");
             out.innerHTML = res.replace(/\n/g, '<br>');
             out.classList.remove('hidden');
             btn.disabled = false; btn.innerHTML = `✨ 重新生成`;
@@ -375,14 +374,11 @@
             const q = inputEl.value;
             const out = document.getElementById('ai-food-output');
             if (!q) return;
-            
             const btn = document.querySelector('#sec-food .ai-btn');
             btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> 詢問中...`;
-            
-            const res = await callGeminiAPI(q, "您是少爺家族紐西蘭旅遊專家，專門為11人大家庭提供具體的餐飲與物資補給建議。");
+            const res = await callGeminiAPI(q, "您是少爺家族紐西蘭旅遊專家，專門為11人大團體提供餐飲建議。");
             out.innerHTML = res.replace(/\n/g, '<br>');
             out.classList.remove('hidden');
-            
             btn.disabled = false; btn.innerHTML = `送出詢問`;
         }
 
@@ -391,11 +387,7 @@
             myChart = new Chart(ctx, { type:'bar', data:{ labels:itineraryData.map(d=>d.day), datasets:[{ label:'里程(km)', data:[15, 190, 230, 210, 200, 70, 140, 70, 160, 10, 430, 160, 20, 15, 15], backgroundColor:'#3b82f6' }] }, options:{ maintainAspectRatio:false } });
         }
 
-        window.onload = () => { 
-            buildUI(); 
-            selectDay(0, document.querySelector('.day-selector-btn')); 
-            setTimeout(() => { initChart(); switchTab('map'); }, 300); 
-        };
+        window.onload = () => { buildUI(); selectDay(0, document.querySelector('.day-selector-btn')); setTimeout(() => { initChart(); switchTab('map'); }, 300); };
     </script>
 </body>
 </html>
