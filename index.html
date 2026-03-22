@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>少爺紐西蘭15雪山湖區精緻靜心遊</title>
+    <title>少爺紐西蘭2026雪山湖區精緻靜心遊</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -29,7 +29,6 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .basecamp-marker { background-color: #2563eb; color: white; border-radius: 50%; border: 2px solid white; box-shadow: 0 3px 6px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
-        .daily-node-marker { background-color: #ef4444; color: white; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
         .day-selector-btn.active { background-color: #3b82f6; color: white; border-color: #3b82f6; }
         
         @media (max-width: 768px) {
@@ -41,10 +40,9 @@
             #sec-table td:before { position: absolute; top: 0.85rem; left: 1rem; width: 3rem; white-space: nowrap; font-weight: 700; color: #64748b; font-size: 0.75rem; }
             #sec-table td:nth-of-type(1):before { content: "日期"; }
             #sec-table td:nth-of-type(2):before { content: "地點"; }
-            #sec-table td:nth-of-type(3):before { content: "行程"; }
-            #sec-table td:nth-of-type(4):before { content: "氣候"; }
-            #sec-table td:nth-of-type(5):before { content: "住宿"; }
-            .flight-banner { flex-direction: column; gap: 0.5rem; }
+            #sec-table td:nth-of-type(3):before { content: "行程細節"; }
+            #sec-table td:nth-of-type(4):before { content: "重要備註"; }
+            #sec-table td:nth-of-type(5):before { content: "住宿基地"; }
         }
     </style>
 </head>
@@ -54,16 +52,16 @@
         <div class="max-w-7xl mx-auto px-4 py-3">
             <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                 <div>
-                    <h1 class="text-2xl font-black text-slate-800 tracking-tight">❄️ 少爺紐西蘭15雪山湖區精緻靜心遊</h1>
-                    <p class="text-xs text-slate-500 mt-1">🚗 少爺專屬三車配置 | 🏠 三大「紐家」放射狀策略</p>
+                    <h1 class="text-2xl font-black text-slate-800 tracking-tight">❄️ 少爺紐西蘭 2026 雪山湖區精緻靜心遊</h1>
+                    <p class="text-xs text-slate-500 mt-1">👨‍👩‍👧‍👦 7大4小 | 🚗 少爺專屬三車配置 | 🏠 定點放射狀漫遊策略</p>
                 </div>
                 <div class="flight-banner flex text-[10px] sm:text-xs border border-slate-200 bg-slate-50 rounded-lg p-3 shadow-sm w-full lg:w-auto">
                     <div class="flex-1 pr-4">
-                        <span class="font-bold text-blue-600">🛫 去程 (8/7-8/8)</span><br>
-                        KHH 11:10 → HKG 19:15 → AKL 13:00 → <strong class="text-slate-800">CHC 14:25 抵達</strong>
+                        <span class="font-bold text-blue-600">🛫 出發 (8/7-8/8)</span><br>
+                        KHH 11:20 → HKG 12:50 抵達 / 20:55 起飛 → AKL → <strong class="text-slate-800">CHC 14:25 抵達</strong>
                     </div>
                     <div class="border-l border-slate-300 pl-4 flex-1">
-                        <span class="font-bold text-amber-600">🛬 回程 (8/22)</span><br>
+                        <span class="font-bold text-amber-600">🛬 賦歸 (8/22)</span><br>
                         CHC 06:45 → AKL 10:15 → HKG 20:40 → <strong class="text-slate-800">KHH 22:10 抵達</strong>
                     </div>
                 </div>
@@ -87,7 +85,7 @@
         <section id="sec-map" class="fade-in block">
             <div class="bg-white rounded-2xl shadow-md p-6 border border-slate-100 mb-8">
                 <h2 class="text-xl font-bold text-slate-800 mb-2">🗺️ 少爺的三大「紐家」定點策略</h2>
-                <p class="text-sm text-slate-600 mb-6 leading-relaxed">將 <strong>瓦納卡 (Wanaka)</strong> 作為連住 6 晚的超級據點，以此放射狀遊覽周邊，徹底免去頻繁收行李的痛苦。</p>
+                <p class="text-sm text-slate-600 mb-6 leading-relaxed">2026 版回歸「低頻移動」策略，以 <strong>瓦納卡 (Wanaka)</strong> 為定點基地，放射狀探索南島核心精華區。</p>
                 <div class="chart-container border-2 border-slate-200 rounded-2xl overflow-hidden shadow-inner">
                     <div id="overviewMap" style="width: 100%; height: 100%;"></div>
                 </div>
@@ -105,8 +103,8 @@
                         <h3 id="daily-title" class="text-xl font-black text-slate-800 mb-3"></h3>
                         <p id="daily-desc" class="text-slate-600 text-sm leading-relaxed flex-grow"></p>
                         <div class="mt-4 pt-4 border-t border-slate-200 text-sm space-y-2">
-                            <div class="flex justify-between"><span>當日里程</span><span id="daily-dist" class="font-bold"></span></div>
-                            <div class="flex justify-between"><span>預估時間</span><span id="daily-time" class="font-bold text-emerald-600"></span></div>
+                            <div class="flex justify-between"><span>預估里程</span><span id="daily-dist" class="font-bold text-slate-800"></span></div>
+                            <div class="flex justify-between"><span>駕駛建議</span><span id="daily-time" class="font-bold text-emerald-600"></span></div>
                         </div>
                     </div>
                     <div class="lg:col-span-2 border-2 border-slate-300 rounded-2xl overflow-hidden shadow-inner h-[400px]">
@@ -119,18 +117,18 @@
         <!-- 3. Table Section -->
         <section id="sec-table" class="fade-in hidden">
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="p-5 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
-                    <h2 class="text-xl font-bold text-slate-800">📅 15日精緻行程總覽</h2>
+                <div class="p-5 border-b border-slate-200 bg-slate-50">
+                    <h2 class="text-xl font-bold text-slate-800">📅 16日豐富行程總表 (2026 最終鎖定版)</h2>
                 </div>
                 <div class="w-full overflow-x-auto">
-                    <table class="w-full divide-y divide-slate-200">
+                    <table class="w-full divide-y divide-slate-200 text-left">
                         <thead class="bg-slate-100 hidden sm:table-header-group">
                             <tr>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase">日期</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase">活動地點</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase w-2/5">行程細節</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase">氣候提醒</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase">當晚住宿</th>
+                                <th class="px-4 py-3 text-xs font-bold text-slate-500 uppercase">日期</th>
+                                <th class="px-4 py-3 text-xs font-bold text-slate-500 uppercase">地點 (中/英)</th>
+                                <th class="px-4 py-3 text-xs font-bold text-slate-500 uppercase w-2/5">行程詳情</th>
+                                <th class="px-4 py-3 text-xs font-bold text-slate-500 uppercase">重要備註</th>
+                                <th class="px-4 py-3 text-xs font-bold text-slate-500 uppercase">住宿基地</th>
                             </tr>
                         </thead>
                         <tbody id="itinerary-tbody" class="bg-white divide-y divide-slate-200"></tbody>
@@ -141,125 +139,80 @@
 
         <!-- 4. Stay Section -->
         <section id="sec-stay" class="fade-in hidden">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6">🏨 少爺的「紐家」住宿規劃</h2>
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">🏨 少爺的「紐家」定點佈局</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-2xl shadow-md border-t-4 border-blue-500 p-6 flex flex-col">
-                    <h3 class="font-bold text-blue-900 text-lg mb-2">紐家1：基督城</h3>
-                    <p class="text-blue-600 font-bold text-sm mb-4">共 6 晚 (首尾緩衝)</p>
-                    <p class="text-slate-600 text-xs leading-relaxed">位於南島大門，負責抵達後的大補給與離開前的伴手禮採買。空間寬敞，適合全家聚會。</p>
+                <div class="bg-white rounded-2xl shadow-md border-t-4 border-blue-500 p-6">
+                    <h3 class="font-bold text-blue-900 text-lg mb-2">紐家1：基督城 Christchurch</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">首尾緩衝基地。負責抵達大採買與最終行李打包。</p>
                 </div>
-                <div class="bg-white rounded-2xl shadow-md border-t-4 border-indigo-500 p-6 flex flex-col">
-                    <h3 class="font-bold text-indigo-900 text-lg mb-2">紐家2：蒂卡波</h3>
-                    <p class="text-indigo-600 font-bold text-sm mb-4">連住 2 晚 (冰川探秘)</p>
-                    <p class="text-slate-600 text-xs leading-relaxed">夢幻星空基地。在此可以放慢步調，專注於庫克山冰川與溫泉樂趣。</p>
+                <div class="bg-white rounded-2xl shadow-md border-t-4 border-indigo-500 p-6">
+                    <h3 class="font-bold text-indigo-900 text-lg mb-2">紐家2：蒂卡波 Lake Tekapo</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">星空夢幻基地。深度探索庫克山冰川與雪地溫泉。</p>
                 </div>
-                <div class="bg-white rounded-2xl shadow-md border-t-4 border-cyan-500 p-6 flex flex-col">
-                    <h3 class="font-bold text-cyan-900 text-lg mb-2">紐家3：瓦納卡</h3>
-                    <p class="text-cyan-600 font-bold text-sm mb-4">霸氣連住 6 晚 (深度慢活)</p>
-                    <p class="text-slate-600 text-xs leading-relaxed">此行的核心基地。免去搬家困擾，以此放射狀前往雪場與皇后鎮。</p>
+                <div class="bg-white rounded-2xl shadow-md border-t-4 border-cyan-500 p-6">
+                    <h3 class="font-bold text-cyan-900 text-lg mb-2">紐家3：瓦納卡 Lake Wanaka</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">行程靈魂基地。連住 6 晚，全家定點放射狀漫遊。</p>
                 </div>
             </div>
         </section>
 
-        <!-- 5. Highlights Section (RESTORED TO FULL 6 ITEMS) -->
+        <!-- 5. Highlights Section -->
         <section id="sec-highlights" class="fade-in hidden">
-             <div class="mb-6"><h2 class="text-2xl font-bold text-slate-800">✨ 親子與雪地亮點 (為4小量身打造)</h2></div>
+             <div class="mb-6"><h2 class="text-2xl font-bold text-slate-800">✨ 精選親子亮點 (6大重點)</h2></div>
              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- 1. Walter Peak -->
-                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200 transition-colors">
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200">
                     <div class="text-3xl mb-3">🚢🐑</div>
                     <h3 class="font-bold text-slate-800 mb-2">TSS 百年蒸汽船 & 牧場</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-4">搭乘南半球唯一燃煤蒸汽船，前往華特峰看剪羊毛與牧羊犬秀。對小孩極具吸引力，且有豐富 BBQ 自助餐。</p>
-                    <span class="mt-auto bg-emerald-50 text-emerald-700 text-[10px] px-2 py-1 rounded w-fit">Day 7 | 皇后鎮</span>
+                    <p class="text-xs text-slate-500 leading-relaxed">搭乘百年燃煤船橫跨湖泊，看牧羊犬趕羊與剪羊毛秀，深受幼童喜愛。</p>
                 </div>
-                <!-- 2. Dog Sledding -->
-                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200 transition-colors">
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200">
                     <div class="text-3xl mb-3">🐕🛷</div>
-                    <h3 class="font-bold text-slate-800 mb-2">Underdog NZ 狗拉雪橇</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-4">坐在雪橇上享受由一群哈士奇帶領奔馳的快感。這是紐西蘭極少數能近距離接觸雪橇犬的冬日限定體驗。</p>
-                    <span class="mt-auto bg-blue-50 text-blue-700 text-[10px] px-2 py-1 rounded w-fit">Day 6 | 瓦納卡</span>
+                    <h3 class="font-bold text-slate-800 mb-2">哈士奇狗拉雪橇</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">與雪橇犬親密互動，在廣袤雪原享受被哈士奇拉動的夢幻速度感。</p>
                 </div>
-                <!-- 3. Cardrona -->
-                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200 transition-colors">
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200">
                     <div class="text-3xl mb-3">🎿✨</div>
                     <h3 class="font-bold text-slate-800 mb-2">Cardrona 安全滑雪魔毯</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-4">特別為兒童設計的「全封閉式」魔毯區，免受強風吹襲。搭乘接駁車上山，讓少爺與家人在溫暖中初試滑雪。</p>
-                    <span class="mt-auto bg-cyan-50 text-cyan-700 text-[10px] px-2 py-1 rounded w-fit">Day 8 | 瓦納卡</span>
+                    <p class="text-xs text-slate-500 leading-relaxed">特別為兒童設計的封閉式透明魔毯，在溫暖與安全中學習滑雪。</p>
                 </div>
-                <!-- 4. Deer Park -->
-                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200 transition-colors">
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200">
                     <div class="text-3xl mb-3">🦌🚗</div>
-                    <h3 class="font-bold text-slate-800 mb-2">Deer Park 鹿園餵食</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-4">不用下車，坐在車內即可餵食窗外的驢子、小鹿與羊駝。具備俯瞰皇后鎮全景的無敵視角。</p>
-                    <span class="mt-auto bg-amber-50 text-amber-700 text-[10px] px-2 py-1 rounded w-fit">Day 9 | 皇后鎮</span>
+                    <h3 class="font-bold text-slate-800 mb-2">Deer Park 鹿園車窗餵食</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">不用下車，坐在車內餵食窗外探頭的小鹿與驢子，搭配無敵湖景。</p>
                 </div>
-                <!-- 5. Castle Hill -->
-                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200 transition-colors">
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200">
                     <div class="text-3xl mb-3">🪨🔍</div>
-                    <h3 class="font-bold text-slate-800 mb-2">Castle Hill 巨石探險</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-4">納尼亞傳奇取景地，天然的巨石迷宮是孩子們最好的躲貓貓場所。在大自然奇景中充分放電。</p>
-                    <span class="mt-auto bg-stone-50 text-stone-700 text-[10px] px-2 py-1 rounded w-fit">Day 2 | 基督城</span>
+                    <h3 class="font-bold text-slate-800 mb-2">Castle Hill 巨石捉迷藏</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">納尼亞傳奇取景地。讓孩童在大自然的巨石陣中盡情攀爬與放電。</p>
                 </div>
-                <!-- 6. Tekapo Springs -->
-                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200 transition-colors">
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col hover:border-blue-200">
                     <div class="text-3xl mb-3">🌌🧘</div>
                     <h3 class="font-bold text-slate-800 mb-2">Tekapo 雪地溫泉 & Tubing</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-4">在零下氣溫中浸泡溫暖泉水，旁邊就是刺激的雪地甜甜圈場 (Snow Tubing)，一次滿足刺激與放鬆。</p>
-                    <span class="mt-auto bg-indigo-50 text-indigo-700 text-[10px] px-2 py-1 rounded w-fit">Day 3 | 蒂卡波</span>
+                    <p class="text-xs text-slate-500 leading-relaxed">在零下氣溫中浸泡溫泉，旁邊就是刺激的雪地甜甜圈場，一次滿足。</p>
                 </div>
              </div>
         </section>
         
         <!-- 6. Food Section -->
         <section id="sec-food" class="fade-in hidden">
-            <div class="mb-8">
-                <h2 class="text-2xl font-bold text-slate-800 mb-2">🍽️ 家族 11 人餐飲推薦攻略</h2>
-                <p class="text-sm text-slate-500">特別挑選空間寬敞、適合小孩且停車便利的指標性餐廳。</p>
-            </div>
-            
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center sm:text-left">🍽️ 家族 11 人餐飲推薦攻略</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Christchurch -->
                 <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden">
-                    <div class="bg-blue-600 text-white px-5 py-3 font-bold">📍 基督城 (Christchurch)</div>
-                    <ul class="p-5 space-y-4">
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">1. Riverside Market</div><div class="text-xs text-slate-500">室內美食街，各買各的，公共區集合用餐。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">2. Pedro's House of Lamb</div><div class="text-xs text-slate-500">招牌烤羊肩外帶店，買回別墅大家分食。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">3. Lone Star</div><div class="text-xs text-slate-500">經典家庭連鎖餐廳，份量大、對小孩極友善。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">4. C1 Espresso</div><div class="text-xs text-slate-500">氣壓管傳送小漢堡，小孩看得很開心。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">5. Little High Eatery</div><div class="text-xs text-slate-500">熱門美食廣場，有披薩、漢堡多元選擇。</div></li>
+                    <div class="bg-blue-600 text-white px-5 py-3 font-bold">📍 基督城與瓦納卡 (Christchurch/Wanaka)</div>
+                    <ul class="p-5 space-y-3 text-sm">
+                        <li><b>Riverside Market:</b> 基督城美食街模式，各取所需，空間寬敞。</li>
+                        <li><b>Pedro's House of Lamb:</b> 招牌烤羊肩，外帶回別墅分享最過癮。</li>
+                        <li><b>Big Fig:</b> 瓦納卡慢燉料理，不用排隊且口味溫潤適合小孩。</li>
+                        <li><b>The Cow:</b> 老字號披薩，建議五點開門即前往搶位。</li>
                     </ul>
                 </div>
-                <!-- Tekapo -->
                 <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden">
-                    <div class="bg-indigo-600 text-white px-5 py-3 font-bold">📍 蒂卡波與中途 (Tekapo)</div>
-                    <ul class="p-5 space-y-4">
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">1. Fairlie Bakehouse</div><div class="text-xs text-slate-500">Fairlie 小鎮，必吃三種口味的鮭魚派。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">2. Kohan Restaurant</div><div class="text-xs text-slate-500">知名湖邊日料，建議提前預訂大圓桌。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">3. High Country Salmon</div><div class="text-xs text-slate-500">近 Twizel，可以餵魚並買生鮮鮭魚。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">4. TLV Restaurant</div><div class="text-xs text-slate-500">寬敞現代，菜單對孩童友善。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">5. Dark Sky Diner</div><div class="text-xs text-slate-500">湖景第一排，享受悠閒漢堡餐。</div></li>
-                    </ul>
-                </div>
-                <!-- Wanaka -->
-                <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden">
-                    <div class="bg-cyan-600 text-white px-5 py-3 font-bold">📍 瓦納卡 (Wanaka)</div>
-                    <ul class="p-5 space-y-4">
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">1. Big Fig</div><div class="text-xs text-slate-500">慢燉料理快餐，不用等，營養均衡。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">2. The Cow</div><div class="text-xs text-slate-500">老字號溫馨披薩店，氣氛好，需提早抵達。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">3. Francesca's Italian Kitchen</div><div class="text-xs text-slate-500">義大利餐廳，環境與義大利麵品質極佳。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">4. Red Star Burger</div><div class="text-xs text-slate-500">瓦納卡在地代表漢堡店。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">5. Kai Whakapai</div><div class="text-xs text-slate-500">湖濱熱門咖啡廳，全天候輕鬆供餐。</div></li>
-                    </ul>
-                </div>
-                <!-- Queenstown -->
-                <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden">
-                    <div class="bg-amber-600 text-white px-5 py-3 font-bold">📍 皇后鎮 (Queenstown)</div>
-                    <ul class="p-5 space-y-4">
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">1. Fergburger</div><div class="text-xs text-slate-500">傳奇漢堡，建議派代表外帶到湖邊吃。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">2. Flame Bar & Grill</div><div class="text-xs text-slate-500">豬肋排與牛排，適合慶祝，需提前訂位。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">3. Stratosfare (纜車餐廳)</div><div class="text-xs text-slate-500">山頂自助餐，無敵湖景配多樣美食。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">4. Winnies Gourmet Pizza</div><div class="text-xs text-slate-500">屋頂可開關的披薩店，氣氛歡樂。</div></li>
-                        <li class="border-b border-slate-50 pb-3 last:border-0"><div class="font-bold">5. Patagonia Chocolates</div><div class="text-xs text-slate-500">湖邊最好吃的冰淇淋與熱巧克力。</div></li>
+                    <div class="bg-amber-600 text-white px-5 py-3 font-bold">📍 皇后鎮與特卡波 (Queenstown/Tekapo)</div>
+                    <ul class="p-5 space-y-3 text-sm">
+                        <li><b>Fairlie Bakehouse:</b> 必吃鮭魚派，中途完美補給站。</li>
+                        <li><b>Fergburger:</b> 傳奇漢堡，建議外帶至湖邊享用。</li>
+                        <li><b>Patagonia:</b> 冰淇淋與熱巧克力，孩童放電後的最終獎勵。</li>
+                        <li><b>Kohan:</b> 湖邊日式料理，鮭魚丼與大圓桌深受好評。</li>
                     </ul>
                 </div>
             </div>
@@ -281,30 +234,31 @@
         const locs = {
             chc: [-43.5321, 172.6362], castleHill: [-43.2268, 171.7161],
             tekapo: [-44.0047, 170.4771], mtCook: [-43.7333, 170.0995],
-            wanaka: [-44.6943, 169.1417], snowFarm: [-44.8700, 169.0900],
-            cardrona: [-44.8920, 168.9482], qt: [-45.0312, 168.6626],
-            deerPark: [-45.0416, 168.7408], arrowtown: [-44.9425, 168.8288], akaroa: [-43.8036, 172.9683]
+            wanaka: [-44.6943, 169.1417], cardrona: [-44.8920, 168.9482], 
+            qt: [-45.0312, 168.6626], deerPark: [-45.0416, 168.7408],
+            arrowtown: [-44.9425, 168.8288], akaroa: [-43.8036, 172.9683]
         };
 
         const itineraryData = [
-            { day: "Day 1", date: "8/8", loc: "基督城 (CHC)", act: "14:25 抵達。取車後前往市區大型 Pak'nSave 超市完成大採買。", stay: "紐家1: 基督城", dist: 15, timeEst: "30分", title: "抵達大採買", path: [locs.chc] },
-            { day: "Day 2", date: "8/9", loc: "Castle Hill", act: "【巨石陣】大自然巨石陣躲貓貓。下午皇家空軍博物館看戰機。", stay: "紐家1: 基督城", dist: 190, timeEst: "2.5h", title: "奇幻巨石攀爬", path: [locs.chc, locs.castleHill, locs.chc] },
-            { day: "Day 3", date: "8/10", loc: "蒂卡波 (Tekapo)", act: "前往紐家2。下午 Tekapo Springs 雪地 Tubing 與溫泉。", stay: "紐家2: 蒂卡波", dist: 230, timeEst: "3h", title: "星空小鎮溫泉", path: [locs.chc, locs.tekapo] },
-            { day: "Day 4", date: "8/11", loc: "庫克山 (Mt Cook)", act: "走平緩的 Hooker Valley 步道吊橋。孩子可以觸摸湖邊浮冰。", stay: "紐家2: 蒂卡波", dist: 210, timeEst: "2.5h", title: "觸摸冰川浮冰", path: [locs.tekapo, locs.mtCook, locs.tekapo] },
-            { day: "Day 5", date: "8/12", loc: "瓦納卡 (Wanaka)", act: "進駐紐家3。下午少爺閒置時光，全家於別墅徹底放鬆。", stay: "紐家3: 瓦納卡", dist: 200, timeEst: "2.5h", title: "別墅靜心閒置", path: [locs.tekapo, locs.wanaka] },
-            { day: "Day 6", date: "8/13", loc: "Snow Farm", act: "【狗拉雪橇】預約哈士奇體驗，與超萌狗狗們合照。", stay: "紐家3: 瓦納卡", dist: 70, timeEst: "1.5h", title: "哈士奇狂歡", path: [locs.wanaka, locs.snowFarm, locs.wanaka] },
-            { day: "Day 7", date: "8/14", loc: "皇后鎮 (QT)", act: "搭乘百年 TSS 復古蒸汽船，前往農場觀賞剪羊毛秀。", stay: "紐家3: 瓦納卡", dist: 140, timeEst: "2.5h", title: "百年蒸汽船", path: [locs.wanaka, locs.qt, locs.wanaka] },
-            { day: "Day 8", date: "8/15", loc: "卡德羅納 (Cardrona)", act: "【安全滑雪】停山下搭接駁車上山。在封閉魔毯區安心學滑雪。", stay: "紐家3: 瓦納卡", dist: 70, timeEst: "1.5h", title: "安全接駁滑雪", path: [locs.wanaka, locs.cardrona, locs.wanaka] },
-            { day: "Day 9", date: "8/16", loc: "皇后鎮 (QT)", act: "開車上 Deer Park Heights 坐在車內餵鹿。逛淘金歷史箭鎮。", stay: "紐家3: 瓦納卡", dist: 160, timeEst: "3h", title: "車窗餵鹿趣", path: [locs.wanaka, locs.deerPark, locs.arrowtown, locs.wanaka] },
-            { day: "Day 10", date: "8/17", loc: "瓦納卡 (Wanaka)", act: "湖畔漫步看孤樹。逛薰衣草農場看羊駝、吃冰淇淋。", stay: "紐家3: 瓦納卡", dist: 10, timeEst: "極短", title: "冰淇淋與羊駝", path: [locs.wanaka] },
-            { day: "Day 11", date: "8/18", loc: "移動/基督城", act: "【大返程】告別湖區。中途在 Geraldine 休息站享用咖啡甜點。", stay: "紐家1: 基督城", dist: 430, timeEst: "5.5h", title: "長途返航", path: [locs.wanaka, locs.tekapo, locs.chc] },
-            { day: "Day 12", date: "8/19", loc: "阿卡羅阿 (Akaroa)", act: "法式風情小鎮。海景下與綿密羊駝合影。逛英倫商店。", stay: "紐家1: 基督城", dist: 160, timeEst: "3h", title: "海景羊駝", path: [locs.chc, locs.akaroa, locs.chc] },
-            { day: "Day 13", date: "8/20", loc: "基督城市區", act: "Margaret Mahy 超大溜滑梯。Willowbank 找奇異鳥。", stay: "紐家1: 基督城", dist: 20, timeEst: "40分", title: "終極放電日", path: [locs.chc] },
-            { day: "Day 14", date: "8/21", loc: "最後採買", act: "市區伴手禮最後衝刺、全家整理行李，慶祝旅程圓滿。", stay: "紐家1: 基督城", dist: 15, timeEst: "30分", title: "最後打包", path: [locs.chc] },
-            { day: "Day 15", date: "8/22", loc: "歸途", act: "06:45 班機平安返回家園，結束美妙旅程。", stay: "機上", dist: 15, timeEst: "30分", title: "平安賦歸", path: [locs.chc] }
+            { day: "Day 1", date: "8/7", loc: "出發 Departure", act: "KHH 11:20 起飛，12:50 抵達香港。20:55 轉機前往奧克蘭 (NZ80)。", stay: "機上 On Plane", dist: 0, timeEst: "長途飛行", note: "準備舒適衣物", path: [locs.chc] },
+            { day: "Day 2", date: "8/8", loc: "基督城 Christchurch", act: "14:25 抵達 CHC。領取 Budget 三台車，Pak'nSave 超市完成首日大補給。", stay: "紐家1: 基督城", dist: 15, timeEst: "輕鬆駕駛", note: "熟悉右駕習慣", path: [locs.chc] },
+            { day: "Day 3", date: "8/9", loc: "基督城 Christchurch", act: "植物園 (Botanic Gardens) 花園漫步、河畔市集 (Riverside Market) 用餐。增加空白緩衝行程。", stay: "紐家1: 基督城", dist: 20, timeEst: "輕鬆市區遊", note: "低體能消耗日", path: [locs.chc] },
+            { day: "Day 4", date: "8/10", loc: "特卡波湖 Lake Tekapo", act: "前往 Tekapo (226km)。參觀好牧羊人教堂、Tekapo Springs 雪地甜甜圈 (玩雪踏雪)。", stay: "紐家2: 蒂卡波", dist: 226, timeEst: "3h 駕駛", note: "注意路面黑冰", path: [locs.chc, locs.tekapo] },
+            { day: "Day 5", date: "8/11", loc: "特卡波湖 Lake Tekapo", act: "玩纜車 (Skyline Gondola) 或是 瓦卡蒂普湖郵船 (Lake Cruise)。定調為緩慢放鬆行程。", stay: "紐家2: 蒂卡波", dist: 30, timeEst: "當地活動", note: "高山景色壯麗", path: [locs.tekapo] },
+            { day: "Day 6", date: "8/12", loc: "瓦納卡 Wanaka", act: "【狗拉雪橇】預約 Underdog NZ 哈士奇雪橇體驗。午後別墅靜心度假。", stay: "紐家3: 瓦納卡", dist: 200, timeEst: "移動與活動", note: "自蒂卡波移動至瓦納卡", path: [locs.tekapo, locs.wanaka] },
+            { day: "Day 7", date: "8/13", loc: "卡德羅納 Cardrona", act: "滑雪日 (Ski Day)。搭乘接駁車前往 Cardrona Alpine Resort 體驗滑雪啟蒙或雪地漫步。", stay: "紐家3: 瓦納卡", dist: 70, timeEst: "雪場接駁", note: "需備防水裝備", path: [locs.wanaka, locs.cardrona, locs.wanaka] },
+            { day: "Day 8", date: "8/14", loc: "皇后鎮 Queenstown", act: "搭 TSS 百年蒸汽船至華特峰牧場餵小羊、看剪羊毛秀。豐富 BBQ 自助餐。", stay: "紐家3: 瓦納卡", dist: 140, timeEst: "往返 2h", note: "親子經典首選", path: [locs.wanaka, locs.qt, locs.wanaka] },
+            { day: "Day 9", date: "8/15", loc: "瓦納卡 Wanaka", act: "空白緩衝行程。全家於別墅靜心度假或在瓦納卡湖畔散步。", stay: "紐家3: 瓦納卡", dist: 10, timeEst: "深度休整", note: "彈性放鬆日", path: [locs.wanaka] },
+            { day: "Day 10", date: "8/16", loc: "皇后鎮 Queenstown", act: "開車上 Deer Park Heights 坐在車內餵動物。逛歷史金礦箭鎮 (Arrowtown)。", stay: "紐家3: 瓦納卡", dist: 160, timeEst: "放射狀行程", note: "免下車景點多", path: [locs.wanaka, locs.deerPark, locs.arrowtown, locs.wanaka] },
+            { day: "Day 11", date: "8/17", loc: "瓦納卡 Wanaka", act: "空白緩衝行程。享受瓦納卡小鎮慢活時光，可自行前往湖畔孤樹拍照。", stay: "紐家3: 瓦納卡", dist: 10, timeEst: "輕鬆自在", note: "慢節奏/免換宿", path: [locs.wanaka] },
+            { day: "Day 12", date: "8/18", loc: "基督城 Christchurch", act: "告別湖區大移動。中途於 Geraldine 休息。傍晚抵達紐家1。", stay: "紐家1: 基督城", dist: 430, timeEst: "5.5h 長途", note: "建議駕駛輪替", path: [locs.wanaka, locs.chc] },
+            { day: "Day 13", date: "8/19", loc: "阿卡羅阿 Akaroa", act: "法式風情小鎮一日遊。Shamarra Alpacas 海景下與蓬鬆羊駝合影。", stay: "紐家1: 基督城", dist: 160, timeEst: "2.5h 往返", note: "路段較彎曲", path: [locs.chc, locs.akaroa, locs.chc] },
+            { day: "Day 14", date: "8/20", loc: "基督城 Christchurch", act: "Margaret Mahy 超大溜滑梯放電。野生動物園 (Willowbank) 看奇異鳥。", stay: "紐家1: 基督城", dist: 20, timeEst: "輕鬆放電", note: "市區悠閒一日", path: [locs.chc] },
+            { day: "Day 15", date: "8/21", loc: "基督城購物 Shopping", act: "伴手禮最後衝刺。全家整理 11 人巨大行李箱。圓滿慶祝晚餐。", stay: "紐家1: 基督城", dist: 15, timeEst: "休閒", note: "放鬆心情", path: [locs.chc] },
+            { day: "Day 16", date: "8/22", loc: "歸途 Departure", act: "04:00 還車。06:45 搭機經奧克蘭與香港，平安返回溫暖的家。", stay: "機上 On Plane", dist: 15, timeEst: "賦歸", note: "清晨極凍備毯", path: [locs.chc] }
         ];
 
-        let overviewMap = null, dailyMap = null, dailyLayerGroup = null, myChart = null, currentDayIndex = 0;
+        let overviewMap = null, dailyMap = null, dailyLayerGroup = null, myChart = null, currentDayIndex = 1;
 
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -318,32 +272,19 @@
             const targetSec = document.getElementById('sec-' + tabId);
             if(targetSec) targetSec.classList.replace('hidden', 'block');
             
-            if(tabId === 'map') { 
-                if(!overviewMap) initOverviewMap();
-                setTimeout(() => overviewMap.invalidateSize(), 200); 
-            }
-            if(tabId === 'daily') { 
-                if(!dailyMap) initDailyMap();
-                setTimeout(() => {
-                    dailyMap.invalidateSize();
-                    renderDailyMap(currentDayIndex);
-                }, 200); 
-            }
-            if(tabId === 'dashboard') {
-                if(!myChart) initChart();
-                setTimeout(() => myChart.resize(), 100);
-            }
+            if(tabId === 'map') { if(!overviewMap) initOverviewMap(); setTimeout(() => overviewMap.invalidateSize(), 200); }
+            if(tabId === 'daily') { if(!dailyMap) initDailyMap(); setTimeout(() => { dailyMap.invalidateSize(); renderDailyMap(currentDayIndex); }, 200); }
+            if(tabId === 'dashboard') { if(!myChart) initChart(); setTimeout(() => myChart.resize(), 100); }
         }
 
         function initOverviewMap() {
             if(overviewMap) return;
             overviewMap = L.map('overviewMap', { scrollWheelZoom: false }).setView([-44.2, 170.5], 6);
             L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}').addTo(overviewMap);
-
             const b = (n) => L.divIcon({ html:`<div class="basecamp-marker" style="width:28px;height:28px;">${n}</div>`, iconSize:[28,28], iconAnchor:[14,14] });
-            L.marker([-43.53, 172.63], {icon:b('1')}).addTo(overviewMap).bindTooltip('紐家1: 基督城');
-            L.marker([-44.00, 170.47], {icon:b('2')}).addTo(overviewMap).bindTooltip('紐家2: 蒂卡波');
-            L.marker([-44.69, 169.14], {icon:b('3')}).addTo(overviewMap).bindTooltip('紐家3: 瓦納卡');
+            L.marker(locs.chc, {icon:b('1')}).addTo(overviewMap).bindTooltip('基地1: 基督城');
+            L.marker(locs.tekapo, {icon:b('2')}).addTo(overviewMap).bindTooltip('基地2: 蒂卡波');
+            L.marker(locs.wanaka, {icon:b('3')}).addTo(overviewMap).bindTooltip('基地3: 瓦納卡');
         }
 
         function initDailyMap() {
@@ -358,7 +299,6 @@
             dailyLayerGroup.clearLayers();
             const p = itineraryData[index].path;
             if(!p || p.length === 0) return;
-            
             const l = L.polyline(p, { color:'#3b82f6', weight:4, opacity: 0.8 }).addTo(dailyLayerGroup);
             dailyMap.fitBounds(l.getBounds(), { padding:[50,50] });
             p.forEach(pt => L.marker(pt, {icon: L.divIcon({ html:`📍`, iconSize:[24,24], iconAnchor:[12,24] })}).addTo(dailyLayerGroup));
@@ -374,12 +314,13 @@
                     <td class="px-4 py-3 align-top sm:align-middle text-sm font-bold text-slate-800">${item.day}<br><span class="text-[10px] text-slate-400 font-normal">${item.date}</span></td>
                     <td class="px-4 py-3 align-top sm:align-middle text-sm text-slate-700 font-bold">${item.loc}</td>
                     <td class="px-4 py-3 align-top sm:align-middle text-sm text-slate-600 leading-relaxed">${item.act}</td>
-                    <td class="px-4 py-3 align-top sm:align-middle text-xs"><b class="text-slate-700">適時保暖</b></td>
+                    <td class="px-4 py-3 align-top sm:align-middle text-xs text-slate-500">${item.note}</td>
                     <td class="px-4 py-3 align-top sm:align-middle text-xs font-bold text-blue-600">${item.stay}</td>
                 `;
                 tbody.appendChild(row);
+                
                 const btn = document.createElement('button');
-                btn.className = `day-selector-btn flex-shrink-0 px-4 py-2 border border-slate-300 rounded-xl text-xs font-bold bg-white ${index === 0 ? 'active' : ''}`;
+                btn.className = `day-selector-btn flex-shrink-0 px-4 py-2 border border-slate-300 rounded-xl text-xs font-bold bg-white ${index === currentDayIndex ? 'active' : ''}`;
                 btn.innerText = item.day;
                 btn.onclick = (e) => selectDay(index, e.target);
                 selector.appendChild(btn);
@@ -389,13 +330,15 @@
         function selectDay(index, el) {
             currentDayIndex = index;
             document.querySelectorAll('.day-selector-btn').forEach(b => b.classList.remove('active'));
-            el.classList.add('active');
+            if(el) el.classList.add('active');
+            
             const d = itineraryData[index];
             document.getElementById('daily-badge').innerText = d.day + " (" + d.date + ")";
-            document.getElementById('daily-title').innerText = d.title;
+            document.getElementById('daily-title').innerText = d.loc;
             document.getElementById('daily-desc').innerText = d.act;
             document.getElementById('daily-dist').innerText = d.dist + " km";
             document.getElementById('daily-time').innerText = d.timeEst;
+            
             renderDailyMap(index);
         }
 
@@ -421,7 +364,12 @@
             });
         }
 
-        window.onload = () => { buildUI(); selectDay(0, document.querySelector('.day-selector-btn')); setTimeout(() => { initChart(); switchTab('map'); }, 300); };
+        window.onload = () => { 
+            buildUI(); 
+            const firstBtn = document.querySelectorAll('.day-selector-btn')[currentDayIndex];
+            selectDay(currentDayIndex, firstBtn); 
+            setTimeout(() => switchTab('map'), 300); 
+        };
     </script>
 </body>
 </html>
