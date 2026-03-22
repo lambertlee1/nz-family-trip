@@ -32,13 +32,6 @@
         .daily-node-marker { background-color: #ef4444; color: white; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
         .day-selector-btn.active { background-color: #3b82f6; color: white; border-color: #3b82f6; }
         
-        .ai-btn { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; transition: all 0.2s; border-radius: 0.75rem; font-weight: 700; }
-        .ai-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-        .ai-box { background-color: #f5f3ff; border: 1px solid #ede9fe; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.875rem; color: #4c1d95; margin-top: 1rem; line-height: 1.7; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
-        
-        .spinner { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid white; width: 16px; height: 16px; animation: spin 1s linear infinite; display: inline-block; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
         @media (max-width: 768px) {
             #sec-table table, #sec-table thead, #sec-table tbody, #sec-table th, #sec-table td, #sec-table tr { display: block; }
             #sec-table thead tr { position: absolute; top: -9999px; left: -9999px; }
@@ -94,7 +87,7 @@
         <section id="sec-map" class="fade-in block">
             <div class="bg-white rounded-2xl shadow-md p-6 border border-slate-100 mb-8">
                 <h2 class="text-xl font-bold text-slate-800 mb-2">🗺️ 少爺的三大「紐家」定點策略</h2>
-                <p class="text-sm text-slate-600 mb-6 leading-relaxed">少爺特別在南島建立三個「紐家」（藍色大圓點）。將瓦納卡 (Wanaka) 作為連住 6 晚的超級據點，徹底免去頻繁收行李的痛苦。</p>
+                <p class="text-sm text-slate-600 mb-6 leading-relaxed">將 <strong>瓦納卡 (Wanaka)</strong> 作為連住 6 晚的超級據點，以此放射狀遊覽周邊，徹底免去頻繁收行李的痛苦。</p>
                 <div class="chart-container border-2 border-slate-200 rounded-2xl overflow-hidden shadow-inner">
                     <div id="overviewMap" style="width: 100%; height: 100%;"></div>
                 </div>
@@ -115,8 +108,6 @@
                             <div class="flex justify-between"><span>當日里程</span><span id="daily-dist" class="font-bold"></span></div>
                             <div class="flex justify-between"><span>預估時間</span><span id="daily-time" class="font-bold text-emerald-600"></span></div>
                         </div>
-                        <button onclick="generateBedtimeStory()" id="ai-story-btn" class="ai-btn w-full py-3 px-4 rounded-xl font-bold text-sm mt-6 shadow-lg">✨ 生成今日床邊故事</button>
-                        <div id="ai-story-output" class="ai-box hidden"></div>
                     </div>
                     <div class="lg:col-span-2 border-2 border-slate-300 rounded-2xl overflow-hidden shadow-inner h-[400px]">
                         <div id="dailyMap" style="width: 100%; height: 100%;"></div>
@@ -128,7 +119,7 @@
         <!-- 3. Table Section -->
         <section id="sec-table" class="fade-in hidden">
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="p-5 border-b border-slate-200 bg-slate-50">
+                <div class="p-5 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
                     <h2 class="text-xl font-bold text-slate-800">📅 15日精緻行程總覽</h2>
                 </div>
                 <div class="w-full overflow-x-auto">
@@ -155,12 +146,12 @@
                 <div class="bg-white rounded-2xl shadow-md border-t-4 border-blue-500 p-6 flex flex-col">
                     <h3 class="font-bold text-blue-900 text-lg mb-2">紐家1：基督城</h3>
                     <p class="text-blue-600 font-bold text-sm mb-4">共 6 晚 (首尾緩衝)</p>
-                    <p class="text-slate-600 text-xs leading-relaxed">位於南島大門，負責抵達後的大補給與最後前的伴手禮採買。空間寬敞，適合全家聚會。</p>
+                    <p class="text-slate-600 text-xs leading-relaxed">位於南島大門，負責抵達後的大補給與離開前的伴手禮採買。空間寬敞，適合全家聚會。</p>
                 </div>
                 <div class="bg-white rounded-2xl shadow-md border-t-4 border-indigo-500 p-6 flex flex-col">
                     <h3 class="font-bold text-indigo-900 text-lg mb-2">紐家2：蒂卡波</h3>
                     <p class="text-indigo-600 font-bold text-sm mb-4">連住 2 晚 (冰川探秘)</p>
-                    <p class="text-slate-600 text-xs leading-relaxed">星空基地。在此可以放慢步調，專注於庫克山冰川與溫泉樂趣。</p>
+                    <p class="text-slate-600 text-xs leading-relaxed">夢幻星空基地。在此可以放慢步調，專注於庫克山冰川與溫泉樂趣。</p>
                 </div>
                 <div class="bg-white rounded-2xl shadow-md border-t-4 border-cyan-500 p-6 flex flex-col">
                     <h3 class="font-bold text-cyan-900 text-lg mb-2">紐家3：瓦納卡</h3>
@@ -170,7 +161,7 @@
             </div>
         </section>
 
-        <!-- 5. Highlights Section (RESTORED) -->
+        <!-- 5. Highlights Section -->
         <section id="sec-highlights" class="fade-in hidden">
              <div class="mb-6"><h2 class="text-2xl font-bold text-slate-800">✨ 精選親子亮點與活動提醒</h2></div>
              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -178,69 +169,149 @@
                     <div class="text-3xl mb-3">🚢🐑</div>
                     <h3 class="font-bold text-slate-800 mb-2">TSS 百年蒸汽船 & 牧場</h3>
                     <p class="text-xs text-slate-500 leading-relaxed mb-4">搭乘南半球唯一燃煤蒸汽船，前往華特峰看剪羊毛與牧羊犬秀。對小孩極具吸引力，且有豐富 BBQ 自助餐。</p>
-                    <span class="mt-auto bg-emerald-50 text-emerald-700 text-[10px] px-2 py-1 rounded w-fit">適度運動 | 高情感回報</span>
                 </div>
                 <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col">
                     <div class="text-3xl mb-3">🐕🛷</div>
                     <h3 class="font-bold text-slate-800 mb-2">Underdog 哈士奇狗拉雪橇</h3>
                     <p class="text-xs text-slate-500 leading-relaxed mb-4">坐在雪橇上享受被哈士奇帶領奔馳的快感，是冬日專屬回憶。需提前數月預訂，非常熱門。</p>
-                    <span class="mt-auto bg-blue-50 text-blue-700 text-[10px] px-2 py-1 rounded w-fit">極限體驗 | 需提早預訂</span>
                 </div>
                 <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col">
                     <div class="text-3xl mb-3">🎿✨</div>
                     <h3 class="font-bold text-slate-800 mb-2">Cardrona 安全滑雪魔毯</h3>
                     <p class="text-xs text-slate-500 leading-relaxed mb-4">特別為兒童設計的「全封閉式」魔毯區，免受強風吹襲。搭乘接駁車上山，安全又溫暖。</p>
-                    <span class="mt-auto bg-cyan-50 text-cyan-700 text-[10px] px-2 py-1 rounded w-fit">幼童友善 | 安全第一</span>
-                </div>
-                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col">
-                    <div class="text-3xl mb-3">🦌🚗</div>
-                    <h3 class="font-bold text-slate-800 mb-2">Deer Park 鹿園餵食</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-4">不用下車，坐在車內即可餵食窗外的驢子與羊駝。具備俯瞰皇后鎮的無敵視角。</p>
-                    <span class="mt-auto bg-amber-50 text-amber-700 text-[10px] px-2 py-1 rounded w-fit">全家參與 | 免步行行程</span>
-                </div>
-                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col">
-                    <div class="text-3xl mb-3">🪨🔍</div>
-                    <h3 class="font-bold text-slate-800 mb-2">Castle Hill 巨石陣</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-4">納尼亞傳奇取景地，天然的巨石迷宮是孩子們最好的躲貓貓場所。注意岩石濕滑。</p>
-                    <span class="mt-auto bg-stone-50 text-stone-700 text-[10px] px-2 py-1 rounded w-fit">消耗體能 | 壯麗地質</span>
-                </div>
-                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col">
-                    <div class="text-3xl mb-3">🌌🧘</div>
-                    <h3 class="font-bold text-slate-800 mb-2">Tekapo 雪地溫泉 & Tubing</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-4">在零度氣溫中浸泡溫泉，旁邊就是刺激的雪地甜甜圈場，一次滿足放電與放鬆。</p>
-                    <span class="mt-auto bg-indigo-50 text-indigo-700 text-[10px] px-2 py-1 rounded w-fit">極致享受 | 放電首選</span>
                 </div>
              </div>
         </section>
         
+        <!-- 6. Food Section (Static Recommendations) -->
         <section id="sec-food" class="fade-in hidden">
-             <div class="bg-white rounded-2xl shadow-md p-8 text-center sm:text-left">
-                <h2 class="text-xl font-bold text-slate-800 mb-4">🍽️ 少爺家族餐飲顧問</h2>
-                <div id="ai-food-input-area" class="flex flex-col sm:flex-row gap-3 mb-6">
-                    <input type="text" id="ai-food-input" placeholder="問問 AI：在瓦納卡適合 11 人的餐廳？" class="flex-grow px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-100 text-sm">
-                    <button onclick="askFoodAssistant()" class="ai-btn px-8 py-3">送出詢問</button>
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-slate-800 mb-2">🍽️ 家族 11 人餐飲推薦攻略</h2>
+                <p class="text-sm text-slate-500">特別挑選空間寬敞、適合小孩且停車便利的指標性餐廳。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Christchurch -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden">
+                    <div class="bg-blue-600 text-white px-5 py-3 font-bold">📍 基督城 (Christchurch)</div>
+                    <ul class="p-5 space-y-4">
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">1. Riverside Market</div>
+                            <div class="text-xs text-slate-500 mt-1">室內美食街模式，大家可以分頭買自己愛吃的，在公共區集合用餐。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">2. Pedro's House of Lamb</div>
+                            <div class="text-xs text-slate-500 mt-1">招牌烤羊肩，專門外帶。買回別墅大家分食，肉質鮮嫩無羶味。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">3. Lone Star</div>
+                            <div class="text-xs text-slate-500 mt-1">經典紐西蘭家庭連鎖餐廳，份量極大且對小孩非常友善。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">4. C1 Espresso</div>
+                            <div class="text-xs text-slate-500 mt-1">非常有特色，小漢堡是透過氣壓管傳送的，小朋友會看得很開心。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">5. Little High Eatery</div>
+                            <div class="text-xs text-slate-500 mt-1">當地超熱門的美食廣場，停車方便，有各種披薩與漢堡選擇。</div>
+                        </li>
+                    </ul>
                 </div>
-                <div id="ai-food-output" class="ai-box hidden"></div>
-             </div>
+
+                <!-- Tekapo -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden">
+                    <div class="bg-indigo-600 text-white px-5 py-3 font-bold">📍 蒂卡波與中途 (Tekapo)</div>
+                    <ul class="p-5 space-y-4">
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">1. Fairlie Bakehouse</div>
+                            <div class="text-xs text-slate-500 mt-1">在 Fairlie 小鎮，鮭魚派與豬五花派是南島必吃補給，適合車上享用。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">2. Kohan Restaurant</div>
+                            <div class="text-xs text-slate-500 mt-1">知名的湖邊日式料理，可以預訂大圓桌或包廂，鮭魚料理必點。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">3. High Country Salmon</div>
+                            <div class="text-xs text-slate-500 mt-1">近 Twizel，可以讓小孩餵魚，買最新鮮的鮭魚生魚片帶回別墅吃。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">4. TLV Restaurant</div>
+                            <div class="text-xs text-slate-500 mt-1">菜單多元，環境寬敞明亮，適合大家庭坐下來慢慢享用晚餐。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">5. Dark Sky Diner</div>
+                            <div class="text-xs text-slate-500 mt-1">湖景第一排，漢堡與薯條口味不錯，風景是最大的賣點。</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Wanaka -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden">
+                    <div class="bg-cyan-600 text-white px-5 py-3 font-bold">📍 瓦納卡 (Wanaka)</div>
+                    <ul class="p-5 space-y-4">
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">1. Big Fig</div>
+                            <div class="text-xs text-slate-500 mt-1">慢燉料理快餐模式，點菜超快。對於很累很餓的一群人來說，效率極高。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">2. The Cow</div>
+                            <div class="text-xs text-slate-500 mt-1">老字號披薩店，氣氛溫馨，雖然不能訂位，但 5 點開門就去通常有位子。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">3. Francesca's Italian Kitchen</div>
+                            <div class="text-xs text-slate-500 mt-1">非常棒的義大利餐廳，環境舒適，義大利麵深受小孩喜愛。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">4. Red Star Burger</div>
+                            <div class="text-xs text-slate-500 mt-1">若不想在皇后鎮排隊買漢堡，瓦納卡這家的漢堡也非常具水準且在地。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">5. Kai Whakapai</div>
+                            <div class="text-xs text-slate-500 mt-1">湖濱轉角最熱門咖啡廳，全天候供餐，氣氛輕鬆適合大家庭隨興用餐。</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Queenstown -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden">
+                    <div class="bg-amber-600 text-white px-5 py-3 font-bold">📍 皇后鎮 (Queenstown)</div>
+                    <ul class="p-5 space-y-4">
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">1. Fergburger</div>
+                            <div class="text-xs text-slate-500 mt-1">舉世聞名漢堡。強烈建議派人外帶到湖邊或車上吃，免去 11 人排隊之苦。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">2. Flame Bar & Grill</div>
+                            <div class="text-xs text-slate-500 mt-1">主打豬肋排與牛排，可以預訂大長桌，氣氛熱烈適合慶祝。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">3. Stratosfare (纜車餐廳)</div>
+                            <div class="text-xs text-slate-500 mt-1">山頂自助餐，風景無敵，11 人大團體非常適合吃自助餐，各取所需。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">4. Winnies Gourmet Pizza</div>
+                            <div class="text-xs text-slate-500 mt-1">屋頂會打開的披薩店，氣氛歡樂，是皇后鎮家庭聚餐首選。</div>
+                        </li>
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="font-bold text-slate-800">5. Patagonia Chocolates</div>
+                            <div class="text-xs text-slate-500 mt-1">湖邊最好吃的冰淇淋與熱巧克力，是所有小朋友放電完的最終補給站。</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
-        <!-- 6. Dashboard Section (RESTORED) -->
+        <!-- 7. Dashboard Section -->
         <section id="sec-dashboard" class="fade-in hidden text-center sm:text-left">
             <div class="bg-white rounded-2xl shadow-md p-6 h-[450px]">
-                <h2 class="text-xl font-bold text-slate-800 mb-2">📊 每日車程駕駛負荷分析</h2>
-                <p class="text-xs text-slate-500 mb-6">深藍色為跨點大移動，淺藍色為定點往返行程。建議超過 200 公里的日子由駕駛輪替。</p>
-                <div class="h-[300px]">
-                    <canvas id="drivingChart"></canvas>
-                </div>
+                <h2 class="text-xl font-bold text-slate-800 mb-4">📊 每日車程駕駛負荷分析</h2>
+                <canvas id="drivingChart"></canvas>
             </div>
         </section>
 
     </main>
 
     <script>
-        // 🔑 您的專屬 API 金鑰
-        const apiKey = "AIzaSyBinuUFRQrAkrlONyRKWazl1hA-AyF8mKE"; 
-
         const locs = {
             chc: [-43.5321, 172.6362], castleHill: [-43.2268, 171.7161],
             tekapo: [-44.0047, 170.4771], mtCook: [-43.7333, 170.0995],
@@ -252,19 +323,19 @@
         const itineraryData = [
             { day: "Day 1", date: "8/8", loc: "基督城 (CHC)", act: "14:25 抵達。取車後前往大型 Pak'nSave 超市大採買。", stay: "紐家1: 基督城", dist: 15, timeEst: "30分", title: "抵達大採買", path: [locs.chc] },
             { day: "Day 2", date: "8/9", loc: "Castle Hill", act: "【巨石陣】大自然巨石陣躲貓貓。下午皇家空軍博物館看戰機。", stay: "紐家1: 基督城", dist: 190, timeEst: "2.5h", title: "奇幻巨石攀爬", path: [locs.chc, locs.castleHill, locs.chc] },
-            { day: "Day 3", date: "8/10", loc: "蒂卡波 (Tekapo)", act: "前往紐家2。下午 Tekapo Springs 雪地 Tubing 與溫泉。", stay: "紐家2: 蒂卡波", dist: 230, timeEst: "3h", title: "星空小鎮溫泉", path: [locs.chc, locs.tekapo] },
+            { day: "Day 3", date: "8/10", loc: "蒂卡波 (Tekapo)", act: "下午 Tekapo Springs 雪地 Tubing 與溫泉。", stay: "紐家2: 蒂卡波", dist: 230, timeEst: "3h", title: "雪盆與溫泉樂", path: [locs.chc, locs.tekapo] },
             { day: "Day 4", date: "8/11", loc: "庫克山 (Mt Cook)", act: "走 Hooker Valley 步道吊橋，觸摸冰河浮冰。", stay: "紐家2: 蒂卡波", dist: 210, timeEst: "2.5h", title: "觸摸冰川浮冰", path: [locs.tekapo, locs.mtCook, locs.tekapo] },
-            { day: "Day 5", date: "8/12", loc: "瓦納卡 (Wanaka)", act: "進駐紐家3。下午特別閒置行程，別墅休息放鬆。", stay: "紐家3: 瓦納卡", dist: 200, timeEst: "2.5h", title: "別墅靜心閒置", path: [locs.tekapo, locs.wanaka] },
+            { day: "Day 5", date: "8/12", loc: "瓦納卡 (Wanaka)", act: "進駐最核心據點紐家3。下午別墅靜心閒置。", stay: "紐家3: 瓦納卡", dist: 200, timeEst: "2.5h", title: "別墅靜心閒置", path: [locs.tekapo, locs.wanaka] },
             { day: "Day 6", date: "8/13", loc: "Snow Farm", act: "【狗拉雪橇】哈士奇體驗，與超萌狗狗們合照。", stay: "紐家3: 瓦納卡", dist: 70, timeEst: "1.5h", title: "哈士奇狂歡", path: [locs.wanaka, locs.snowFarm, locs.wanaka] },
             { day: "Day 7", date: "8/14", loc: "皇后鎮 (QT)", act: "搭百年蒸汽船至對岸農場餵小羊、看剪羊毛秀。", stay: "紐家3: 瓦納卡", dist: 140, timeEst: "2.5h", title: "百年蒸汽船", path: [locs.wanaka, locs.qt, locs.wanaka] },
-            { day: "Day 8", date: "8/15", loc: "卡德羅納 (Cardrona)", act: "【安全滑雪】接駁巴士上山。封閉魔毯區帶孩滑雪。", stay: "紐家3: 瓦納卡", dist: 70, timeEst: "1.5h", title: "滑雪初體驗", path: [locs.wanaka, locs.cardrona, locs.wanaka] },
+            { day: "Day 8", date: "8/15", loc: "卡德羅納 (Cardrona)", act: "【安全滑雪】停山下搭接駁車上山。帶孩子安心學滑雪。", stay: "紐家3: 瓦納卡", dist: 70, timeEst: "1.5h", title: "滑雪初體驗", path: [locs.wanaka, locs.cardrona, locs.wanaka] },
             { day: "Day 9", date: "8/16", loc: "皇后鎮 (QT)", act: "開車上 Deer Park Heights 坐在車內餵鹿。逛箭鎮。", stay: "紐家3: 瓦納卡", dist: 160, timeEst: "3h", title: "車窗餵鹿趣", path: [locs.wanaka, locs.deerPark, locs.arrowtown, locs.wanaka] },
-            { day: "Day 10", date: "8/17", loc: "瓦納卡 (Wanaka)", act: "湖畔看孤樹。逛薰衣草農場看羊駝、吃冰淇淋。", stay: "紐家3: 瓦納卡", dist: 10, timeEst: "極短", title: "冰淇淋與羊駝", path: [locs.wanaka] },
-            { day: "Day 11", date: "8/18", loc: "移動/基督城", act: "【大返程】中途在 Geraldine 休息站享用咖啡甜點。", stay: "紐家1: 基督城", dist: 430, timeEst: "5.5h", title: "長途返航", path: [locs.wanaka, locs.tekapo, locs.chc] },
+            { day: "Day 10", date: "8/17", loc: "瓦納卡 (Wanaka)", act: "湖畔漫步看孤樹。逛薰衣草農場看羊駝、吃冰淇淋。", stay: "紐家3: 瓦納卡", dist: 10, timeEst: "極短", title: "冰淇淋與羊駝", path: [locs.wanaka] },
+            { day: "Day 11", date: "8/18", loc: "移動/基督城", act: "【大返程】告別湖區。中途在 Geraldine 休息。", stay: "紐家1: 基督城", dist: 430, timeEst: "5.5h", title: "長途返航", path: [locs.wanaka, locs.tekapo, locs.chc] },
             { day: "Day 12", date: "8/19", loc: "阿卡羅阿 (Akaroa)", act: "法式風情小鎮。海景下與綿密羊駝合影。", stay: "紐家1: 基督城", dist: 160, timeEst: "3h", title: "海景羊駝", path: [locs.chc, locs.akaroa, locs.chc] },
-            { day: "Day 13", date: "8/20", loc: "基督城市區", act: "超大溜滑梯放電。野生動物園看奇異鳥。", stay: "紐家1: 基督城", dist: 20, timeEst: "40分", title: "終極放電日", path: [locs.chc] },
-            { day: "Day 14", date: "8/21", loc: "最後採買", act: "市區伴手禮最後衝刺、整理行李、慶祝圓滿。", stay: "紐家1: 基督城", dist: 15, timeEst: "30分", title: "打包與慶祝", path: [locs.chc] },
-            { day: "Day 15", date: "8/22", loc: "歸途", act: "機場還車。06:45 準時起飛返回家園。", stay: "機上", dist: 15, timeEst: "30分", title: "平安賦歸", path: [locs.chc] }
+            { day: "Day 13", date: "8/20", loc: "基督城市區", act: "Margaret Mahy 超大溜滑梯。野生動物園看奇異鳥。", stay: "紐家1: 基督城", dist: 20, timeEst: "40分", title: "終極放電日", path: [locs.chc] },
+            { day: "Day 14", date: "8/21", loc: "最後採買", act: "市區伴手禮最後衝刺、全家整理行李。", stay: "紐家1: 基督城", dist: 15, timeEst: "30分", title: "打包與慶祝", path: [locs.chc] },
+            { day: "Day 15", date: "8/22", loc: "歸途", act: "歸還車輛。06:45 班機平安返回家園。", stay: "機上", dist: 15, timeEst: "30分", title: "平安賦歸", path: [locs.chc] }
         ];
 
         let overviewMap = null, dailyMap = null, dailyLayerGroup = null, myChart = null, currentDayIndex = 0;
@@ -327,26 +398,6 @@
             p.forEach(pt => L.marker(pt, {icon: L.divIcon({ html:`📍`, iconSize:[24,24], iconAnchor:[12,24] })}).addTo(dailyLayerGroup));
         }
 
-        async function callGeminiAPI(prompt, systemPrompt) {
-            const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey;
-            try {
-                const response = await fetch(url, { 
-                    method: 'POST', 
-                    headers: { 'Content-Type': 'application/json' }, 
-                    body: JSON.stringify({ 
-                        contents: [{ parts: [{ text: prompt }] }], 
-                        systemInstruction: { parts: [{ text: systemPrompt }] } 
-                    }) 
-                });
-                if (!response.ok) {
-                    const err = await response.json();
-                    return "⚠️ AI 錯誤 (" + response.status + ")：" + (err.error?.message || "請求失敗。");
-                }
-                const data = await response.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "AI 目前沒有回應。";
-            } catch (e) { return "⚠️ 連接失敗。錯誤：" + e.message; }
-        }
-
         function buildUI() {
             const tbody = document.getElementById('itinerary-tbody');
             const selector = document.getElementById('day-selector-container');
@@ -377,31 +428,9 @@
             document.getElementById('daily-badge').innerText = d.day + " (" + d.date + ")";
             document.getElementById('daily-title').innerText = d.title;
             document.getElementById('daily-desc').innerText = d.act;
-            document.getElementById('ai-story-output').classList.add('hidden');
+            document.getElementById('daily-dist').innerText = d.dist + " km";
+            document.getElementById('daily-time').innerText = d.timeEst;
             renderDailyMap(index);
-        }
-
-        async function generateBedtimeStory() {
-            const btn = document.getElementById('ai-story-btn');
-            const out = document.getElementById('ai-story-output');
-            btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> 正在編織故事...`;
-            const res = await callGeminiAPI("寫一篇專屬少爺家族(11人，含4個幼童)的溫馨床邊故事，靈感來自： " + itineraryData[currentDayIndex].act, "您是溫柔說書人模式，用繁體中文書寫。");
-            out.innerHTML = res.replace(/\n/g, '<br>');
-            out.classList.remove('hidden');
-            btn.disabled = false; btn.innerHTML = "✨ 重新生成今日故事";
-        }
-
-        async function askFoodAssistant() {
-            const inputEl = document.getElementById('ai-food-input');
-            const q = inputEl.value;
-            const out = document.getElementById('ai-food-output');
-            if (!q) return;
-            const btn = document.querySelector('#sec-food .ai-btn');
-            btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> 詢問中...`;
-            const res = await callGeminiAPI(q, "您是少爺家族紐西蘭旅遊專家，專門為11人大家庭提供餐飲建議。");
-            out.innerHTML = res.replace(/\n/g, '<br>');
-            out.classList.remove('hidden');
-            btn.disabled = false; btn.innerHTML = "送出詢問";
         }
 
         function initChart() {
