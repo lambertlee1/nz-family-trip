@@ -16,28 +16,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Noto Sans TC', sans-serif; background-color: #f8fafc; color: #334155; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
         .tab-btn.active { border-bottom: 4px solid #3b82f6; color: #1d4ed8; font-weight: 700; }
+        
         .chart-container { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; height: 450px; }
         .daily-map-container { position: relative; width: 100%; height: 400px; }
+
         .fade-in { animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
         .basecamp-marker { background-color: #2563eb; color: white; border-radius: 50%; border: 2px solid white; box-shadow: 0 3px 6px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
+        .daily-node-marker { background-color: #ef4444; color: white; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
         .day-selector-btn.active { background-color: #3b82f6; color: white; border-color: #3b82f6; }
+        
         .ai-btn { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; transition: all 0.2s; border-radius: 0.75rem; font-weight: 700; }
-        .ai-box { background-color: #f5f3ff; border: 1px solid #ede9fe; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.875rem; color: #4c1d95; margin-top: 1rem; line-height: 1.7; }
+        .ai-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .ai-box { background-color: #f5f3ff; border: 1px solid #ede9fe; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.875rem; color: #4c1d95; margin-top: 1rem; line-height: 1.7; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
+        
         .spinner { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid white; width: 16px; height: 16px; animation: spin 1s linear infinite; display: inline-block; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
         @media (max-width: 768px) {
             #sec-table table, #sec-table thead, #sec-table tbody, #sec-table th, #sec-table td, #sec-table tr { display: block; }
             #sec-table thead tr { position: absolute; top: -9999px; left: -9999px; }
-            #sec-table tr { margin-bottom: 1.5rem; border: 1px solid #e2e8f0; border-radius: 1rem; background-color: white; padding: 0.5rem; }
-            #sec-table td { border: none; border-bottom: 1px solid #f1f5f9; position: relative; padding: 0.75rem 1rem 0.75rem 4.5rem !important; }
-            #sec-table td:before { position: absolute; left: 1rem; width: 3rem; font-weight: 700; color: #64748b; font-size: 0.75rem; }
+            #sec-table tr { margin-bottom: 1.5rem; border: 1px solid #e2e8f0; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); background-color: white; padding: 0.5rem; }
+            #sec-table td { border: none; border-bottom: 1px solid #f1f5f9; position: relative; padding: 0.75rem 1rem 0.75rem 4.5rem !important; min-height: 2.8rem; font-size: 0.875rem; }
+            #sec-table td:last-child { border-bottom: 0; }
+            #sec-table td:before { position: absolute; top: 0.85rem; left: 1rem; width: 3rem; white-space: nowrap; font-weight: 700; color: #64748b; font-size: 0.75rem; }
             #sec-table td:nth-of-type(1):before { content: "日期"; }
             #sec-table td:nth-of-type(2):before { content: "地點"; }
             #sec-table td:nth-of-type(3):before { content: "行程"; }
             #sec-table td:nth-of-type(4):before { content: "氣候"; }
             #sec-table td:nth-of-type(5):before { content: "住宿"; }
+            .flight-banner { flex-direction: column; gap: 0.5rem; }
         }
     </style>
 </head>
@@ -45,132 +59,292 @@
 
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3">
-            <h1 class="text-xl font-black text-slate-800">❄️ 少爺紐西蘭15雪山湖區精緻靜心遊</h1>
-            <nav class="flex space-x-1 mt-4 overflow-x-auto w-full pb-1">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+                <div>
+                    <h1 class="text-2xl font-black text-slate-800 tracking-tight">❄️ 少爺紐西蘭15雪山湖區精緻靜心遊</h1>
+                    <p class="text-xs text-slate-500 mt-1">🚗 少爺專屬三車配置 | 🏠 三大「紐家」放射狀策略</p>
+                </div>
+                <div class="flight-banner flex text-[10px] sm:text-xs border border-slate-200 bg-slate-50 rounded-lg p-3 shadow-sm w-full lg:w-auto">
+                    <div class="flex-1 pr-4">
+                        <span class="font-bold text-blue-600">🛫 去程 (8/7-8/8)</span><br>
+                        KHH 11:10 → HKG 19:15 → AKL 13:00 → <strong class="text-slate-800">CHC 14:25 抵達</strong>
+                    </div>
+                    <div class="border-l border-slate-300 pl-4 flex-1">
+                        <span class="font-bold text-amber-600">🛬 回程 (8/22)</span><br>
+                        CHC 06:45 → AKL 10:15 → HKG 20:40 → <strong class="text-slate-800">KHH 22:10 抵達</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="flex space-x-1 mt-4 overflow-x-auto w-full pb-1 custom-scrollbar">
                 <button onclick="switchTab('map')" id="tab-map" class="tab-btn active px-3 py-2 text-sm font-bold whitespace-nowrap">總覽地圖</button>
                 <button onclick="switchTab('daily')" id="tab-daily" class="tab-btn px-3 py-2 text-sm font-bold whitespace-nowrap">每日路線</button>
                 <button onclick="switchTab('table')" id="tab-table" class="tab-btn px-3 py-2 text-sm font-bold whitespace-nowrap">每日總表</button>
                 <button onclick="switchTab('stay')" id="tab-stay" class="tab-btn px-3 py-2 text-sm font-bold whitespace-nowrap">住宿詳情</button>
+                <button onclick="switchTab('highlights')" id="tab-highlights" class="tab-btn px-3 py-2 text-sm font-bold whitespace-nowrap">親子亮點</button>
                 <button onclick="switchTab('food')" id="tab-food" class="tab-btn px-3 py-2 text-sm font-bold whitespace-nowrap">餐飲攻略</button>
+                <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn px-3 py-2 text-sm font-bold whitespace-nowrap">駕駛分析</button>
             </nav>
         </div>
     </header>
 
     <main class="flex-grow max-w-7xl mx-auto px-4 py-6 w-full">
-        <!-- Section: Map -->
+
+        <!-- 1. Map Section -->
         <section id="sec-map" class="fade-in block">
-            <div class="bg-white rounded-2xl shadow-md p-6 border mb-8">
-                <h2 class="font-bold mb-4">🗺️ 放射狀定點住宿策略</h2>
-                <div class="chart-container border rounded-2xl overflow-hidden shadow-inner">
+            <div class="bg-white rounded-2xl shadow-md p-6 border border-slate-100 mb-8">
+                <h2 class="text-xl font-bold text-slate-800 mb-2">🗺️ 少爺的三大「紐家」定點策略</h2>
+                <p class="text-sm text-slate-600 mb-6 leading-relaxed">少爺特別在南島建立三個「紐家」（藍色大圓點）。將瓦納卡 (Wanaka) 作為連住 6 晚的超級據點，徹底免去頻繁收行李的痛苦。</p>
+                <div class="chart-container border-2 border-slate-200 rounded-2xl overflow-hidden shadow-inner">
                     <div id="overviewMap" style="width: 100%; height: 100%;"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Section: Daily -->
+        <!-- 2. Daily Section -->
         <section id="sec-daily" class="fade-in hidden">
-            <div class="bg-white rounded-2xl shadow-md p-6 border">
-                <div class="flex overflow-x-auto py-2 mb-4 space-x-2" id="day-selector-container"></div>
+            <div class="bg-white rounded-2xl shadow-md p-6 border border-slate-100">
+                <h2 class="text-xl font-bold text-slate-800 mb-4">📍 每日導航細節</h2>
+                <div class="flex overflow-x-auto py-2 mb-4 space-x-2 custom-scrollbar" id="day-selector-container"></div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div class="lg:col-span-1 bg-slate-50 border rounded-2xl p-6 flex flex-col">
-                        <span id="daily-badge" class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded font-bold w-fit mb-2"></span>
-                        <h3 id="daily-title" class="text-xl font-black mb-3"></h3>
+                    <div class="lg:col-span-1 bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col shadow-sm">
+                        <span id="daily-badge" class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded font-bold w-fit mb-2"></span>
+                        <h3 id="daily-title" class="text-xl font-black text-slate-800 mb-3"></h3>
                         <p id="daily-desc" class="text-slate-600 text-sm leading-relaxed flex-grow"></p>
-                        <button onclick="generateBedtimeStory()" id="ai-story-btn" class="ai-btn w-full py-3 px-4 mt-6 shadow-lg">✨ 生成今日床邊故事</button>
+                        <div class="mt-4 pt-4 border-t border-slate-200 text-sm space-y-2">
+                            <div class="flex justify-between"><span>當日里程</span><span id="daily-dist" class="font-bold"></span></div>
+                            <div class="flex justify-between"><span>預估時間</span><span id="daily-time" class="font-bold text-emerald-600"></span></div>
+                        </div>
+                        <button onclick="generateBedtimeStory()" id="ai-story-btn" class="ai-btn w-full py-3 px-4 rounded-xl font-bold text-sm mt-6 shadow-lg">✨ 生成今日床邊故事</button>
                         <div id="ai-story-output" class="ai-box hidden"></div>
                     </div>
-                    <div class="lg:col-span-2 border rounded-2xl overflow-hidden h-[400px]">
+                    <div class="lg:col-span-2 border-2 border-slate-300 rounded-2xl overflow-hidden shadow-inner h-[400px]">
                         <div id="dailyMap" style="width: 100%; height: 100%;"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section: Table -->
+        <!-- 3. Table Section -->
         <section id="sec-table" class="fade-in hidden">
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border">
-                <table class="w-full divide-y">
-                    <thead class="bg-slate-100 hidden sm:table-header-group text-xs font-bold text-slate-500 uppercase">
-                        <tr><th class="px-4 py-3 text-left">日期</th><th class="px-4 py-3 text-left">地點</th><th class="px-4 py-3 text-left">行程</th><th class="px-4 py-3 text-left">氣候</th><th class="px-4 py-3 text-left">住宿</th></tr>
-                    </thead>
-                    <tbody id="itinerary-tbody" class="bg-white divide-y"></tbody>
-                </table>
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
+                <div class="p-5 border-b border-slate-200 bg-slate-50">
+                    <h2 class="text-xl font-bold text-slate-800">📅 15日精緻行程總覽</h2>
+                </div>
+                <div class="w-full overflow-x-auto">
+                    <table class="w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-100 hidden sm:table-header-group">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase">日期</th>
+                                <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase">活動地點</th>
+                                <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase w-2/5">行程細節</th>
+                                <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase">氣候提醒</th>
+                                <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase">當晚住宿</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itinerary-tbody" class="bg-white divide-y divide-slate-200"></tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
-        <!-- Section: Stay -->
+        <!-- 4. Stay Section -->
         <section id="sec-stay" class="fade-in hidden">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">🏨 少爺的「紐家」住宿規劃</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow border-t-4 border-blue-500"><h3 class="font-bold text-blue-900">紐家1：基督城</h3><p class="text-xs mt-2">共 6 晚。大採買與最後整備基地。</p></div>
-                <div class="bg-white p-6 rounded-2xl shadow border-t-4 border-indigo-500"><h3 class="font-bold text-indigo-900">紐家2：蒂卡波</h3><p class="text-xs mt-2">連住 2 晚。星空下的冰川探秘基地。</p></div>
-                <div class="bg-white p-6 rounded-2xl shadow border-t-4 border-cyan-500"><h3 class="font-bold text-cyan-900">紐家3：瓦納卡</h3><p class="text-xs mt-2">霸氣連住 6 晚。此行最核心的靜心慢活基地。</p></div>
+                <div class="bg-white rounded-2xl shadow-md border-t-4 border-blue-500 p-6 flex flex-col">
+                    <h3 class="font-bold text-blue-900 text-lg mb-2">紐家1：基督城</h3>
+                    <p class="text-blue-600 font-bold text-sm mb-4">共 6 晚 (首尾緩衝)</p>
+                    <p class="text-slate-600 text-xs leading-relaxed">位於南島大門，負責抵達後的大補給與最後前的伴手禮採買。空間寬敞，適合全家聚會。</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-md border-t-4 border-indigo-500 p-6 flex flex-col">
+                    <h3 class="font-bold text-indigo-900 text-lg mb-2">紐家2：蒂卡波</h3>
+                    <p class="text-indigo-600 font-bold text-sm mb-4">連住 2 晚 (冰川探秘)</p>
+                    <p class="text-slate-600 text-xs leading-relaxed">星空基地。在此可以放慢步調，專注於庫克山冰川與溫泉樂趣。</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-md border-t-4 border-cyan-500 p-6 flex flex-col">
+                    <h3 class="font-bold text-cyan-900 text-lg mb-2">紐家3：瓦納卡</h3>
+                    <p class="text-cyan-600 font-bold text-sm mb-4">霸氣連住 6 晚 (深度慢活)</p>
+                    <p class="text-slate-600 text-xs leading-relaxed">此行的核心基地。免去搬家困擾，以此放射狀前往雪場與皇后鎮。</p>
+                </div>
             </div>
         </section>
 
-        <!-- Section: Food -->
+        <!-- 5. Highlights Section (RESTORED) -->
+        <section id="sec-highlights" class="fade-in hidden">
+             <div class="mb-6"><h2 class="text-2xl font-bold text-slate-800">✨ 精選親子亮點與活動提醒</h2></div>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col">
+                    <div class="text-3xl mb-3">🚢🐑</div>
+                    <h3 class="font-bold text-slate-800 mb-2">TSS 百年蒸汽船 & 牧場</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">搭乘南半球唯一燃煤蒸汽船，前往華特峰看剪羊毛與牧羊犬秀。對小孩極具吸引力，且有豐富 BBQ 自助餐。</p>
+                    <span class="mt-auto bg-emerald-50 text-emerald-700 text-[10px] px-2 py-1 rounded w-fit">適度運動 | 高情感回報</span>
+                </div>
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col">
+                    <div class="text-3xl mb-3">🐕🛷</div>
+                    <h3 class="font-bold text-slate-800 mb-2">Underdog 哈士奇狗拉雪橇</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">坐在雪橇上享受被哈士奇帶領奔馳的快感，是冬日專屬回憶。需提前數月預訂，非常熱門。</p>
+                    <span class="mt-auto bg-blue-50 text-blue-700 text-[10px] px-2 py-1 rounded w-fit">極限體驗 | 需提早預訂</span>
+                </div>
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col">
+                    <div class="text-3xl mb-3">🎿✨</div>
+                    <h3 class="font-bold text-slate-800 mb-2">Cardrona 安全滑雪魔毯</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">特別為兒童設計的「全封閉式」魔毯區，免受強風吹襲。搭乘接駁車上山，安全又溫暖。</p>
+                    <span class="mt-auto bg-cyan-50 text-cyan-700 text-[10px] px-2 py-1 rounded w-fit">幼童友善 | 安全第一</span>
+                </div>
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col">
+                    <div class="text-3xl mb-3">🦌🚗</div>
+                    <h3 class="font-bold text-slate-800 mb-2">Deer Park 鹿園餵食</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">不用下車，坐在車內即可餵食窗外的驢子與羊駝。具備俯瞰皇后鎮的無敵視角。</p>
+                    <span class="mt-auto bg-amber-50 text-amber-700 text-[10px] px-2 py-1 rounded w-fit">全家參與 | 免步行行程</span>
+                </div>
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col">
+                    <div class="text-3xl mb-3">🪨🔍</div>
+                    <h3 class="font-bold text-slate-800 mb-2">Castle Hill 巨石陣</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">納尼亞傳奇取景地，天然的巨石迷宮是孩子們最好的躲貓貓場所。注意岩石濕滑。</p>
+                    <span class="mt-auto bg-stone-50 text-stone-700 text-[10px] px-2 py-1 rounded w-fit">消耗體能 | 壯麗地質</span>
+                </div>
+                <div class="bg-white rounded-2xl shadow p-5 border border-slate-100 flex flex-col">
+                    <div class="text-3xl mb-3">🌌🧘</div>
+                    <h3 class="font-bold text-slate-800 mb-2">Tekapo 雪地溫泉 & Tubing</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">在零度氣溫中浸泡溫泉，旁邊就是刺激的雪地甜甜圈場，一次滿足放電與放鬆。</p>
+                    <span class="mt-auto bg-indigo-50 text-indigo-700 text-[10px] px-2 py-1 rounded w-fit">極致享受 | 放電首選</span>
+                </div>
+             </div>
+        </section>
+        
         <section id="sec-food" class="fade-in hidden">
-            <div class="bg-white rounded-2xl shadow-md p-8">
-                <h2 class="font-bold mb-4">🍽️ 少爺家族餐飲顧問</h2>
-                <div class="flex flex-col sm:flex-row gap-3 mb-6">
-                    <input type="text" id="ai-food-input" placeholder="在瓦納卡適合 11 人的餐廳？" class="flex-grow px-4 py-3 border rounded-xl">
+             <div class="bg-white rounded-2xl shadow-md p-8 text-center sm:text-left">
+                <h2 class="text-xl font-bold text-slate-800 mb-4">🍽️ 少爺家族餐飲顧問</h2>
+                <div id="ai-food-input-area" class="flex flex-col sm:flex-row gap-3 mb-6">
+                    <input type="text" id="ai-food-input" placeholder="問問 AI：在瓦納卡適合 11 人的餐廳？" class="flex-grow px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-100 text-sm">
                     <button onclick="askFoodAssistant()" class="ai-btn px-8 py-3">送出詢問</button>
                 </div>
                 <div id="ai-food-output" class="ai-box hidden"></div>
+             </div>
+        </section>
+
+        <!-- 6. Dashboard Section (RESTORED) -->
+        <section id="sec-dashboard" class="fade-in hidden text-center sm:text-left">
+            <div class="bg-white rounded-2xl shadow-md p-6 h-[450px]">
+                <h2 class="text-xl font-bold text-slate-800 mb-2">📊 每日車程駕駛負荷分析</h2>
+                <p class="text-xs text-slate-500 mb-6">深藍色為跨點大移動，淺藍色為定點往返行程。建議超過 200 公里的日子由駕駛輪替。</p>
+                <div class="h-[300px]">
+                    <canvas id="drivingChart"></canvas>
+                </div>
             </div>
         </section>
+
     </main>
 
     <script>
+        // 🔑 您的專屬 API 金鑰
         const apiKey = "AIzaSyBinuUFRQrAkrlONyRKWazl1hA-AyF8mKE"; 
 
+        const locs = {
+            chc: [-43.5321, 172.6362], castleHill: [-43.2268, 171.7161],
+            tekapo: [-44.0047, 170.4771], mtCook: [-43.7333, 170.0995],
+            wanaka: [-44.6943, 169.1417], snowFarm: [-44.8700, 169.0900],
+            cardrona: [-44.8920, 168.9482], qt: [-45.0312, 168.6626],
+            deerPark: [-45.0416, 168.7408], arrowtown: [-44.9425, 168.8288], akaroa: [-43.8036, 172.9683]
+        };
+
         const itineraryData = [
-            { day: "Day 1", date: "8/8", loc: "基督城 (CHC)", act: "14:25 抵達。取車後前往大型 Pak'nSave 超市大採買。", stay: "紐家1: 基督城", path: [[-43.53, 172.63]] },
-            { day: "Day 2", date: "8/9", loc: "Castle Hill", act: "【巨石陣】大自然巨石攀爬。下午皇家空軍博物館看戰機。", stay: "紐家1: 基督城", path: [[-43.53, 172.63], [-43.22, 171.71], [-43.53, 172.63]] },
-            { day: "Day 3", date: "8/10", loc: "蒂卡波 (Tekapo)", act: "前往紐家2。下午雪地 Tubing 與溫泉。", stay: "紐家2: 蒂卡波", path: [[-43.53, 172.63], [-44.00, 170.47]] },
-            { day: "Day 4", date: "8/11", loc: "庫克山 (Mt Cook)", act: "胡克谷步道吊橋，觸摸冰河浮冰。", stay: "紐家2: 蒂卡波", path: [[-44.00, 170.47], [-43.73, 170.09], [-44.00, 170.47]] },
-            { day: "Day 5", date: "8/12", loc: "瓦納卡 (Wanaka)", act: "進駐最核心據點紐家3。下午別墅靜心閒置。", stay: "紐家3: 瓦納卡", path: [[-44.00, 170.47], [-44.69, 169.14]] },
-            { day: "Day 6", date: "8/13", loc: "Snow Farm", act: "【狗拉雪橇】哈士奇體驗，與狗狗拍照。", stay: "紐家3: 瓦納卡", path: [[-44.69, 169.14], [-44.87, 169.09], [-44.69, 169.14]] },
-            { day: "Day 7", date: "8/14", loc: "皇后鎮 (QT)", act: "搭百年蒸汽船至對岸牧場看剪羊毛秀。", stay: "紐家3: 瓦納卡", path: [[-44.69, 169.14], [-45.03, 168.66], [-44.69, 169.14]] },
-            { day: "Day 8", date: "8/15", loc: "卡德羅納 (Cardrona)", act: "【安全滑雪】接駁巴士上山，體驗封閉魔毯。", stay: "紐家3: 瓦納卡", path: [[-44.69, 169.14], [-44.89, 168.94], [-44.69, 169.14]] },
-            { day: "Day 9", date: "8/16", loc: "皇后鎮 (QT)", act: "開車上鹿園高地餵動物。逛淘金箭鎮。", stay: "紐家3: 瓦納卡", path: [[-44.69, 169.14], [-45.04, 168.74], [-44.69, 169.14]] },
-            { day: "Day 10", date: "8/17", loc: "瓦納卡 (Wanaka)", act: "湖畔看孤樹。逛薰衣草農場看羊駝。", stay: "紐家3: 瓦納卡", path: [[-44.69, 169.14]] },
-            { day: "Day 11", date: "8/18", loc: "移動/基督城", act: "【大返程】中途在 Geraldine 休息。", stay: "紐家1: 基督城", path: [[-44.69, 169.14], [-43.53, 172.63]] },
-            { day: "Day 12", date: "8/19", loc: "阿卡羅阿 (Akaroa)", act: "法式風情小鎮。海景羊駝合影。", stay: "紐家1: 基督城", path: [[-43.53, 172.63], [-43.80, 172.96], [-43.53, 172.63]] },
-            { day: "Day 13", date: "8/20", loc: "基督城市區", act: "超大溜滑梯。野生動物園看奇異鳥。", stay: "紐家1: 基督城", path: [[-43.53, 172.63]] },
-            { day: "Day 14", date: "8/21", loc: "最後採買", act: "市區採買、整理行李、圓滿慶祝。", stay: "紐家1: 基督城", path: [[-43.53, 172.63]] },
-            { day: "Day 15", date: "8/22", loc: "歸途", act: "機場還車。06:45 搭機賦歸。", stay: "機上", path: [[-43.53, 172.63]] }
+            { day: "Day 1", date: "8/8", loc: "基督城 (CHC)", act: "14:25 抵達。取車後前往大型 Pak'nSave 超市大採買。", stay: "紐家1: 基督城", dist: 15, timeEst: "30分", title: "抵達大採買", path: [locs.chc] },
+            { day: "Day 2", date: "8/9", loc: "Castle Hill", act: "【巨石陣】大自然巨石陣躲貓貓。下午皇家空軍博物館看戰機。", stay: "紐家1: 基督城", dist: 190, timeEst: "2.5h", title: "奇幻巨石攀爬", path: [locs.chc, locs.castleHill, locs.chc] },
+            { day: "Day 3", date: "8/10", loc: "蒂卡波 (Tekapo)", act: "前往紐家2。下午 Tekapo Springs 雪地 Tubing 與溫泉。", stay: "紐家2: 蒂卡波", dist: 230, timeEst: "3h", title: "星空小鎮溫泉", path: [locs.chc, locs.tekapo] },
+            { day: "Day 4", date: "8/11", loc: "庫克山 (Mt Cook)", act: "走 Hooker Valley 步道吊橋，觸摸冰河浮冰。", stay: "紐家2: 蒂卡波", dist: 210, timeEst: "2.5h", title: "觸摸冰川浮冰", path: [locs.tekapo, locs.mtCook, locs.tekapo] },
+            { day: "Day 5", date: "8/12", loc: "瓦納卡 (Wanaka)", act: "進駐紐家3。下午特別閒置行程，別墅休息放鬆。", stay: "紐家3: 瓦納卡", dist: 200, timeEst: "2.5h", title: "別墅靜心閒置", path: [locs.tekapo, locs.wanaka] },
+            { day: "Day 6", date: "8/13", loc: "Snow Farm", act: "【狗拉雪橇】哈士奇體驗，與超萌狗狗們合照。", stay: "紐家3: 瓦納卡", dist: 70, timeEst: "1.5h", title: "哈士奇狂歡", path: [locs.wanaka, locs.snowFarm, locs.wanaka] },
+            { day: "Day 7", date: "8/14", loc: "皇后鎮 (QT)", act: "搭百年蒸汽船至對岸農場餵小羊、看剪羊毛秀。", stay: "紐家3: 瓦納卡", dist: 140, timeEst: "2.5h", title: "百年蒸汽船", path: [locs.wanaka, locs.qt, locs.wanaka] },
+            { day: "Day 8", date: "8/15", loc: "卡德羅納 (Cardrona)", act: "【安全滑雪】接駁巴士上山。封閉魔毯區帶孩滑雪。", stay: "紐家3: 瓦納卡", dist: 70, timeEst: "1.5h", title: "滑雪初體驗", path: [locs.wanaka, locs.cardrona, locs.wanaka] },
+            { day: "Day 9", date: "8/16", loc: "皇后鎮 (QT)", act: "開車上 Deer Park Heights 坐在車內餵鹿。逛箭鎮。", stay: "紐家3: 瓦納卡", dist: 160, timeEst: "3h", title: "車窗餵鹿趣", path: [locs.wanaka, locs.deerPark, locs.arrowtown, locs.wanaka] },
+            { day: "Day 10", date: "8/17", loc: "瓦納卡 (Wanaka)", act: "湖畔看孤樹。逛薰衣草農場看羊駝、吃冰淇淋。", stay: "紐家3: 瓦納卡", dist: 10, timeEst: "極短", title: "冰淇淋與羊駝", path: [locs.wanaka] },
+            { day: "Day 11", date: "8/18", loc: "移動/基督城", act: "【大返程】中途在 Geraldine 休息站享用咖啡甜點。", stay: "紐家1: 基督城", dist: 430, timeEst: "5.5h", title: "長途返航", path: [locs.wanaka, locs.tekapo, locs.chc] },
+            { day: "Day 12", date: "8/19", loc: "阿卡羅阿 (Akaroa)", act: "法式風情小鎮。海景下與綿密羊駝合影。", stay: "紐家1: 基督城", dist: 160, timeEst: "3h", title: "海景羊駝", path: [locs.chc, locs.akaroa, locs.chc] },
+            { day: "Day 13", date: "8/20", loc: "基督城市區", act: "超大溜滑梯放電。野生動物園看奇異鳥。", stay: "紐家1: 基督城", dist: 20, timeEst: "40分", title: "終極放電日", path: [locs.chc] },
+            { day: "Day 14", date: "8/21", loc: "最後採買", act: "市區伴手禮最後衝刺、整理行李、慶祝圓滿。", stay: "紐家1: 基督城", dist: 15, timeEst: "30分", title: "打包與慶祝", path: [locs.chc] },
+            { day: "Day 15", date: "8/22", loc: "歸途", act: "機場還車。06:45 準時起飛返回家園。", stay: "機上", dist: 15, timeEst: "30分", title: "平安賦歸", path: [locs.chc] }
         ];
 
-        let overviewMap = null, dailyMap = null, dailyLayerGroup = null, currentDayIndex = 0;
+        let overviewMap = null, dailyMap = null, dailyLayerGroup = null, myChart = null, currentDayIndex = 0;
 
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('tab-' + tabId).classList.add('active');
-            ['map', 'daily', 'table', 'stay', 'food'].forEach(sec => document.getElementById('sec-' + sec).classList.add('hidden'));
-            document.getElementById('sec-' + tabId).classList.remove('hidden');
-            if(tabId === 'map') { if(!overviewMap) initOverviewMap(); setTimeout(() => overviewMap.invalidateSize(), 200); }
-            if(tabId === 'daily') { if(!dailyMap) initDailyMap(); setTimeout(() => { dailyMap.invalidateSize(); renderDailyMap(currentDayIndex); }, 200); }
+            const activeBtn = document.getElementById('tab-' + tabId);
+            if(activeBtn) activeBtn.classList.add('active');
+
+            ['map', 'daily', 'table', 'stay', 'highlights', 'food', 'dashboard'].forEach(sec => {
+                const el = document.getElementById('sec-' + sec);
+                if(el) { el.classList.add('hidden'); el.classList.remove('block'); }
+            });
+            const targetSec = document.getElementById('sec-' + tabId);
+            if(targetSec) targetSec.classList.replace('hidden', 'block');
+            
+            if(tabId === 'map') { 
+                if(!overviewMap) initOverviewMap();
+                setTimeout(() => overviewMap.invalidateSize(), 200); 
+            }
+            if(tabId === 'daily') { 
+                if(!dailyMap) initDailyMap();
+                setTimeout(() => {
+                    dailyMap.invalidateSize();
+                    renderDailyMap(currentDayIndex);
+                }, 200); 
+            }
+            if(tabId === 'dashboard') {
+                if(!myChart) initChart();
+                setTimeout(() => myChart.resize(), 100);
+            }
         }
 
-        async function callGeminiAPI(prompt) {
-            // ✨ 重要修正：使用 v1beta 版本並確保網址拼寫正確
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-            
-            const payload = {
-                contents: [{
-                    parts: [{ text: "請扮演一個溫柔的說書人或紐西蘭導遊。以下是提問：" + prompt }]
-                }]
-            };
+        function initOverviewMap() {
+            if(overviewMap) return;
+            overviewMap = L.map('overviewMap', { scrollWheelZoom: false }).setView([-44.2, 170.5], 6);
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}').addTo(overviewMap);
 
+            const b = (n) => L.divIcon({ html:`<div class="basecamp-marker" style="width:28px;height:28px;">${n}</div>`, iconSize:[28,28], iconAnchor:[14,14] });
+            L.marker([-43.53, 172.63], {icon:b('1')}).addTo(overviewMap).bindTooltip('紐家1: 基督城');
+            L.marker([-44.00, 170.47], {icon:b('2')}).addTo(overviewMap).bindTooltip('紐家2: 蒂卡波');
+            L.marker([-44.69, 169.14], {icon:b('3')}).addTo(overviewMap).bindTooltip('紐家3: 瓦納卡');
+        }
+
+        function initDailyMap() {
+            if(dailyMap) return;
+            dailyMap = L.map('dailyMap', { scrollWheelZoom: false });
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}').addTo(dailyMap);
+            dailyLayerGroup = L.layerGroup().addTo(dailyMap);
+        }
+
+        function renderDailyMap(index) {
+            if(!dailyMap || !dailyLayerGroup) return;
+            dailyLayerGroup.clearLayers();
+            const p = itineraryData[index].path;
+            if(!p || p.length === 0) return;
+            
+            const l = L.polyline(p, { color:'#3b82f6', weight:4, opacity: 0.8 }).addTo(dailyLayerGroup);
+            dailyMap.fitBounds(l.getBounds(), { padding:[50,50] });
+            p.forEach(pt => L.marker(pt, {icon: L.divIcon({ html:`📍`, iconSize:[24,24], iconAnchor:[12,24] })}).addTo(dailyLayerGroup));
+        }
+
+        async function callGeminiAPI(prompt, systemPrompt) {
+            const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey;
             try {
-                const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                const response = await fetch(url, { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify({ 
+                        contents: [{ parts: [{ text: prompt }] }], 
+                        systemInstruction: { parts: [{ text: systemPrompt }] } 
+                    }) 
+                });
                 if (!response.ok) {
-                    const errData = await response.json();
-                    return `⚠️ 發生錯誤 (${response.status})：${errData.error?.message || "原因不明，請檢查金鑰限制。"}`;
+                    const err = await response.json();
+                    return "⚠️ AI 錯誤 (" + response.status + ")：" + (err.error?.message || "請求失敗。");
                 }
                 const data = await response.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "AI 暫無回應";
-            } catch (e) { return "❌ 連接失敗：" + e.message; }
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "AI 目前沒有回應。";
+            } catch (e) { return "⚠️ 連接失敗。錯誤：" + e.message; }
         }
 
         function buildUI() {
@@ -178,68 +352,78 @@
             const selector = document.getElementById('day-selector-container');
             itineraryData.forEach((item, index) => {
                 const row = document.createElement('tr');
-                row.innerHTML = `<td class="px-4 py-3 text-sm font-bold">${item.day}</td><td class="px-4 py-3 text-sm font-bold">${item.loc}</td><td class="px-4 py-3 text-sm text-slate-600">${item.act}</td><td class="px-4 py-3 text-xs text-slate-400">適時保暖</td><td class="px-4 py-3 text-xs font-bold text-blue-600">${item.stay}</td>`;
+                row.className = "hover:bg-blue-50 transition-colors";
+                row.innerHTML = `
+                    <td class="px-4 py-3 align-top sm:align-middle text-sm font-bold text-slate-800">${item.day}<br><span class="text-[10px] text-slate-400 font-normal">${item.date}</span></td>
+                    <td class="px-4 py-3 align-top sm:align-middle text-sm text-slate-700 font-bold">${item.loc}</td>
+                    <td class="px-4 py-3 align-top sm:align-middle text-sm text-slate-600 leading-relaxed">${item.act}</td>
+                    <td class="px-4 py-3 align-top sm:align-middle text-xs"><b class="text-slate-700">適時保暖</b></td>
+                    <td class="px-4 py-3 align-top sm:align-middle text-xs font-bold text-blue-600">${item.stay}</td>
+                `;
                 tbody.appendChild(row);
                 const btn = document.createElement('button');
-                btn.className = "day-selector-btn flex-shrink-0 px-4 py-2 border rounded-xl text-xs font-bold bg-white";
+                btn.className = `day-selector-btn flex-shrink-0 px-4 py-2 border border-slate-300 rounded-xl text-xs font-bold bg-white ${index === 0 ? 'active' : ''}`;
                 btn.innerText = item.day;
-                btn.onclick = () => selectDay(index, btn);
+                btn.onclick = (e) => selectDay(index, e.target);
                 selector.appendChild(btn);
             });
         }
 
-        function selectDay(index, btn) {
+        function selectDay(index, el) {
             currentDayIndex = index;
             document.querySelectorAll('.day-selector-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            el.classList.add('active');
             const d = itineraryData[index];
-            document.getElementById('daily-badge').innerText = d.day + " (" + (d.date || "") + ")";
-            document.getElementById('daily-title').innerText = d.loc;
+            document.getElementById('daily-badge').innerText = d.day + " (" + d.date + ")";
+            document.getElementById('daily-title').innerText = d.title;
             document.getElementById('daily-desc').innerText = d.act;
+            document.getElementById('ai-story-output').classList.add('hidden');
             renderDailyMap(index);
         }
 
         async function generateBedtimeStory() {
             const btn = document.getElementById('ai-story-btn');
             const out = document.getElementById('ai-story-output');
-            btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> 故事編織中...`;
-            const prompt = "根據這段行程寫一個200字內的床邊故事：" + itineraryData[currentDayIndex].act;
-            const res = await callGeminiAPI(prompt);
+            btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> 正在編織故事...`;
+            const res = await callGeminiAPI("寫一篇專屬少爺家族(11人，含4個幼童)的溫馨床邊故事，靈感來自： " + itineraryData[currentDayIndex].act, "您是溫柔說書人模式，用繁體中文書寫。");
             out.innerHTML = res.replace(/\n/g, '<br>');
             out.classList.remove('hidden');
-            btn.disabled = false; btn.innerHTML = "✨ 重新生成";
+            btn.disabled = false; btn.innerHTML = "✨ 重新生成今日故事";
         }
 
         async function askFoodAssistant() {
-            const q = document.getElementById('ai-food-input').value;
+            const inputEl = document.getElementById('ai-food-input');
+            const q = inputEl.value;
             const out = document.getElementById('ai-food-output');
-            if(!q) return;
-            const res = await callGeminiAPI("針對紐西蘭家族11人旅行，回答這個問題：" + q);
+            if (!q) return;
+            const btn = document.querySelector('#sec-food .ai-btn');
+            btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> 詢問中...`;
+            const res = await callGeminiAPI(q, "您是少爺家族紐西蘭旅遊專家，專門為11人大家庭提供餐飲建議。");
             out.innerHTML = res.replace(/\n/g, '<br>');
             out.classList.remove('hidden');
+            btn.disabled = false; btn.innerHTML = "送出詢問";
         }
 
-        function initOverviewMap() {
-            overviewMap = L.map('overviewMap', { scrollWheelZoom: false }).setView([-44.2, 170.5], 6);
-            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}').addTo(overviewMap);
-            L.marker([-43.53, 172.63]).addTo(overviewMap).bindTooltip('紐家1');
-            L.marker([-44.00, 170.47]).addTo(overviewMap).bindTooltip('紐家2');
-            L.marker([-44.69, 169.14]).addTo(overviewMap).bindTooltip('紐家3');
-        }
-
-        function initDailyMap() {
-            dailyMap = L.map('dailyMap', { scrollWheelZoom: false });
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{y}/{x}.png').addTo(dailyMap);
-            dailyLayerGroup = L.layerGroup().addTo(dailyMap);
-        }
-
-        function renderDailyMap(index) {
-            if(!dailyLayerGroup) return;
-            dailyLayerGroup.clearLayers();
-            const p = itineraryData[index].path;
-            const l = L.polyline(p, { color:'#3b82f6', weight:4 }).addTo(dailyLayerGroup);
-            dailyMap.fitBounds(l.getBounds(), { padding:[50,50] });
-            p.forEach(pt => L.marker(pt).addTo(dailyLayerGroup));
+        function initChart() {
+            if(myChart) return;
+            const ctx = document.getElementById('drivingChart').getContext('2d');
+            myChart = new Chart(ctx, { 
+                type:'bar', 
+                data:{ 
+                    labels:itineraryData.map(d=>d.day), 
+                    datasets:[{ 
+                        label:'單日里程 (km)', 
+                        data:itineraryData.map(d=>d.dist), 
+                        backgroundColor:itineraryData.map(d=>d.dist > 200 ? '#1e3a8a' : '#3b82f6'),
+                        borderRadius: 6
+                    }] 
+                }, 
+                options:{ 
+                    responsive: true,
+                    maintainAspectRatio:false,
+                    plugins: { legend: { display: false } }
+                } 
+            });
         }
 
         window.onload = () => { buildUI(); selectDay(0, document.querySelector('.day-selector-btn')); switchTab('map'); };
