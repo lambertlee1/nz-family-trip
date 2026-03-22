@@ -211,6 +211,7 @@
     </main>
 
     <script>
+        // 🔑 您的專屬 API 金鑰
         const apiKey = "AIzaSyBinuUFRQrAkrlONyRKWazl1hA-AyF8mKE"; 
 
         const locs = {
@@ -236,7 +237,7 @@
             { day: "Day 12", date: "8/19", loc: "阿卡羅阿 (Akaroa)", act: "法式風情小鎮。海景下與綿密羊駝合影留念。", stay: "紐家1: 基督城", dist: "160 km", timeEst: "3h", title: "海景羊駝", temp: "↔️ 相近", weather: "海風帶寒。", path: [locs.chc, locs.akaroa, locs.chc] },
             { day: "Day 13", date: "8/20", loc: "基督城市區", act: "超大溜滑梯放電。Willowbank 找奇異鳥。", stay: "紐家1: 基督城", dist: "20 km", timeEst: "40分", title: "終極放電", temp: "🌡️ 基準", weather: "適合跑跳。", path: [locs.chc] },
             { day: "Day 14", date: "8/21", loc: "最後採買", act: "市區伴手禮最後衝刺、慶祝旅程圓滿。", stay: "紐家1: 基督城", dist: "15 km", timeEst: "30分", title: "最後打包", temp: "🌡️ 基準", weather: "放鬆休息。", path: [locs.chc] },
-            { day: "Day 15", date: "8/22", loc: "歸途", act: "機場還車。06:45 班機平安返回家園。", stay: "機上", dist: "15 km", timeEst: "30分", title: "平安賦歸", temp: "✈️ 溫溫", weather: "早晨極凍。", path: [locs.chc] }
+            { day: "Day 15", date: "8/22", loc: "歸途", act: "機場還車。06:45 班機平安返回家園。", stay: "機上", dist: "15 km", timeEst: "30分", title: "平安賦歸", temp: "✈️ 溫暖", weather: "早晨極凍。", path: [locs.chc] }
         ];
 
         let overviewMap = null, dailyMap = null, dailyLayerGroup = null, myChart = null, currentDayIndex = 0;
@@ -297,12 +298,28 @@
         }
 
         async function callGeminiAPI(prompt, systemPrompt) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            // 使用穩定版 gemini-1.5-flash
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             try {
-                const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], systemInstruction: { parts: [{ text: systemPrompt }] } }) });
+                const response = await fetch(url, { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify({ 
+                        contents: [{ parts: [{ text: prompt }] }], 
+                        systemInstruction: { parts: [{ text: systemPrompt }] } 
+                    }) 
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    return `⚠️ AI 呼叫失敗 (${response.status})：${errorData.error?.message || "原因不明，請檢查金鑰網址限制。"}`;
+                }
+
                 const data = await response.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "AI 忙碌中，請稍候。";
-            } catch (e) { return "連接失敗。"; }
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "AI 目前沒有回應，請稍候重試。";
+            } catch (e) { 
+                return `⚠️ 連接失敗：請檢查您的網路或金鑰設定。錯誤：${e.message}`; 
+            }
         }
 
         function buildUI() {
@@ -344,19 +361,27 @@
         async function generateBedtimeStory() {
             const btn = document.getElementById('ai-story-btn');
             const out = document.getElementById('ai-story-output');
-            btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> 故事編織中...`;
-            const res = await callGeminiAPI(`寫一篇專屬少爺家族的溫馨床邊故事，靈感來自：${itineraryData[currentDayIndex].act}`, "溫柔說書人");
+            btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> 正在編織故事...`;
+            const res = await callGeminiAPI(`寫一篇專屬少爺家族(11人)的溫馨床邊故事，靈感來自當天行程：${itineraryData[currentDayIndex].act}`, "溫柔說書人模式，用繁體中文書寫。");
             out.innerHTML = res.replace(/\n/g, '<br>');
             out.classList.remove('hidden');
             btn.disabled = false; btn.innerHTML = `✨ 重新生成`;
         }
 
         async function askFoodAssistant() {
-            const q = document.getElementById('ai-food-input').value;
+            const inputEl = document.getElementById('ai-food-input');
+            const q = inputEl.value;
             const out = document.getElementById('ai-food-output');
-            const res = await callGeminiAPI(q, "少爺家族旅遊專家。");
+            if (!q) return;
+            
+            const btn = document.querySelector('#sec-food .ai-btn');
+            btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> 詢問中...`;
+            
+            const res = await callGeminiAPI(q, "您是少爺家族紐西蘭旅遊專家，專門為11人大家庭提供實用的餐飲與補給建議。");
             out.innerHTML = res.replace(/\n/g, '<br>');
             out.classList.remove('hidden');
+            
+            btn.disabled = false; btn.innerHTML = `送出詢問`;
         }
 
         function initChart() {
