@@ -14,8 +14,7 @@
     .gold { color: #f0d9a8; text-shadow: 0 0 20px rgba(240, 217, 168, 0.7); }
     .day-card { transition: all 0.3s ease; }
     .day-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(240 217 168 / 0.15); }
-    .day-img { height: 200px; object-fit: cover; border-radius: 16px; }
-    iframe { border-radius: 20px; box-shadow: 0 10px 30px rgba(240, 217, 168, 0.2); }
+    iframe { border-radius: 16px; box-shadow: 0 10px 25px rgba(240, 217, 168, 0.15); }
   </style>
 </head>
 <body class="luxury-bg text-[#f0e6d2]">
@@ -32,7 +31,7 @@
         <a href="#area" class="hover:gold transition">🏡 區域</a>
         <a href="#itinerary" class="hover:gold transition">🗓️ 詳細行程</a>
         <a href="#highlight" class="hover:gold transition">⭐ 亮點</a>
-        <a href="#map" class="hover:gold transition">🛣️ 路線地圖</a>
+        <a href="#map" class="hover:gold transition">🛣️ 多點路線</a>
       </div>
       <div class="text-xs uppercase tracking-widest border border-[#f0d9a8]/40 px-5 py-2 rounded-3xl flex items-center gap-2">
         <i class="fa-solid fa-car text-[#f0d9a8]"></i>
@@ -91,17 +90,21 @@
     </div>
   </section>
 
-  <!-- 完整 15 天詳細行程（每一天都有雪景小圖） -->
+  <!-- 完整 15 天詳細行程（每一天都有獨立小地圖 + 移動距離） -->
   <section id="itinerary" class="max-w-7xl mx-auto px-6 py-20">
     <h2 class="title-font text-5xl mb-12 text-center gold">🗓️ 每一天詳細行程</h2>
     <div class="space-y-6">
+
       <!-- Day 1 -->
       <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
         <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 1 • 8/8 六 • 基督城</span><i class="fa-solid fa-chevron-down"></i></summary>
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
           <div><strong>交通：</strong>飛機抵達 CHC<br><strong>景點：</strong>緩衝調整時差<br><strong>用餐：</strong>機上／機場<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>香港機場逛街＋美食，逛超市採買</div>
         </div>
-        <img src="https://picsum.photos/id/1015/600/300" alt="基督城雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：機場抵達（0km 自駕）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Christchurch,+New+Zealand&amp;t=m&amp;z=12&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 2 -->
@@ -110,16 +113,22 @@
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
           <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Castle Hill（納尼亞巨石陣）<br><strong>用餐：</strong>Sheffield Pies、The Darfield Dairy<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>步道平緩易走，單程約20分鐘</div>
         </div>
-        <img src="https://picsum.photos/id/1016/600/300" alt="Castle Hill 雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：輕鬆自駕（約80km）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Castle+Hill,+New+Zealand&amp;t=m&amp;z=13&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 3 -->
       <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
         <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 3 • 8/10 一 • Lake Tekapo 提卡波</span><i class="fa-solid fa-chevron-down"></i></summary>
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
-          <div><strong>交通：</strong>汽車／拉車 (226KM, 3HR)<br><strong>景點：</strong>Church of the Good Shepherd<br><strong>用餐：</strong>Geraldine Cheeseery<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>Tekapo Springs 雪地油管＋溫泉</div>
+          <div><strong>交通：</strong>汽車／拉車<br><strong>景點：</strong>Church of the Good Shepherd<br><strong>用餐：</strong>Geraldine Cheeseery<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>Tekapo Springs 雪地油管＋溫泉</div>
         </div>
-        <img src="https://picsum.photos/id/133/600/300" alt="提卡波雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：226KM（3小時）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Lake+Tekapo,+New+Zealand&amp;t=m&amp;z=12&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 4 -->
@@ -128,7 +137,10 @@
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
           <div><strong>交通：</strong>汽車／拉車<br><strong>景點：</strong>前往 Wanaka 區域<br><strong>用餐：</strong>(中途) Omarama<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>整趟最遠，注意痠痛</div>
         </div>
-        <img src="https://picsum.photos/id/201/600/300" alt="Wanaka 雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：225KM（2.5小時）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Wanaka,+New+Zealand&amp;t=m&amp;z=12&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 5 -->
@@ -137,7 +149,10 @@
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
           <div><strong>交通：</strong>接駁／雪<br><strong>景點：</strong>Cardrona Alpine Resort 或 Snow Farm<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>雪鞋健行、狗拉雪橇</div>
         </div>
-        <img src="https://picsum.photos/id/1005/600/300" alt="Cardrona 雪場" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：雪場接駁（約30km）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Cardrona+Alpine+Resort,+New+Zealand&amp;t=m&amp;z=13&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 6 -->
@@ -146,16 +161,22 @@
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
           <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Wanaka Lavender Farm（餵食小動物）<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>當地人行程</div>
         </div>
-        <img src="https://picsum.photos/id/1018/600/300" alt="Wanaka 雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：輕鬆自駕（約10km）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Wanaka+Lavender+Farm,+New+Zealand&amp;t=m&amp;z=14&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 7 -->
       <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
         <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 7 • 8/14 五 • Wanaka → Queenstown</span><i class="fa-solid fa-chevron-down"></i></summary>
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
-          <div><strong>交通：</strong>汽車／移動 (69KM)<br><strong>景點：</strong>Deer Park Heights（魔戒場景）<br><strong>用餐：</strong>Fergburger<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>高山觀光接駁 Gondola</div>
+          <div><strong>交通：</strong>汽車／移動<br><strong>景點：</strong>Deer Park Heights（魔戒場景）<br><strong>用餐：</strong>Fergburger<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>高山觀光接駁 Gondola</div>
         </div>
-        <img src="https://picsum.photos/id/133/600/300" alt="皇后鎮雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：69KM（1小時）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Queenstown,+New+Zealand&amp;t=m&amp;z=12&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 8 -->
@@ -164,7 +185,10 @@
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
           <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Wanaka Tree<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>The Hermitage Hotel<br><strong>備註：</strong>緩衝行程</div>
         </div>
-        <img src="https://picsum.photos/id/1015/600/300" alt="Wanaka Tree 雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：輕鬆自駕（約20km）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Wanaka+Tree,+New+Zealand&amp;t=m&amp;z=14&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 9 -->
@@ -173,7 +197,10 @@
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
           <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Tasman Glacier View Track<br><strong>用餐：</strong>Old Mountaineers' Cafe<br><strong>住宿：</strong>The Hermitage Hotel<br><strong>備註：</strong>最純淨星空</div>
         </div>
-        <img src="https://picsum.photos/id/1005/600/300" alt="Mt Cook 冰川雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：輕鬆自駕（約60km）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Mount+Cook+Village,+New+Zealand&amp;t=m&amp;z=13&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 10 -->
@@ -182,16 +209,22 @@
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
           <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Elephant Rocks、Victorian Precinct<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>Clay Cliffs 黏土懸崖</div>
         </div>
-        <img src="https://picsum.photos/id/201/600/300" alt="Oamaru 雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：輕鬆自駕（約120km）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Oamaru,+New+Zealand&amp;t=m&amp;z=12&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 11 -->
       <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
         <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 11 • 8/18 二 • 阿卡羅阿 (Akaroa)</span><i class="fa-solid fa-chevron-down"></i></summary>
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
-          <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Shamarra Alpaca Farm（草泥馬農場）<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>SiloStay<br><strong>備註：</strong>無敵海景、法國殖民風</div>
+          <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Shamarra Alpaca Farm<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>SiloStay<br><strong>備註：</strong>無敵海景、法國殖民風</div>
         </div>
-        <img src="https://picsum.photos/id/133/600/300" alt="Akaroa 雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：輕鬆自駕（約80km）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Akaroa,+New+Zealand&amp;t=m&amp;z=13&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 12-14 -->
@@ -200,7 +233,10 @@
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
           <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>回到基督城 Hilltop Lookout<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>自由活動</div>
         </div>
-        <img src="https://picsum.photos/id/1015/600/300" alt="南島雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：緩衝自駕（視情況）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Christchurch,+New+Zealand&amp;t=m&amp;z=11&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
 
       <!-- Day 15 -->
@@ -209,8 +245,12 @@
         <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
           <div><strong>交通：</strong>04:00 抵達 CHC 機場<br><strong>景點：</strong>無<br><strong>用餐：</strong>機上<br><strong>住宿：</strong>無<br><strong>備註：</strong>06:45 CHC → 22:10 KHH 到家</div>
         </div>
-        <img src="https://picsum.photos/id/1016/600/300" alt="返程雪景" class="day-img mt-6 w-full">
+        <div class="mt-6">
+          <p class="text-[#f0d9a8] text-sm mb-3">移動距離：機場接駁（0km 自駕）</p>
+          <iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Christchurch+Airport,+New+Zealand&amp;t=m&amp;z=14&amp;output=embed&amp;hl=zh-TW"></iframe>
+        </div>
       </details>
+
     </div>
   </section>
 
@@ -227,16 +267,15 @@
     </div>
   </section>
 
-  <!-- 路線地圖（已換成真 Google Map） -->
+  <!-- 多點精準路線地圖（整體行程） -->
   <section id="map" class="max-w-7xl mx-auto px-6 py-20">
-    <h2 class="title-font text-5xl mb-4 text-center gold">🛣️ 三台車自駕路線地圖</h2>
-    <p class="text-center text-[#f0d9a8]/70 mb-8">9大4小開三台車同行 • 點擊地圖可放大、切換衛星圖、查看實景</p>
+    <h2 class="title-font text-5xl mb-4 text-center gold">🛣️ 三台車自駕多點路線</h2>
+    <p class="text-center text-[#f0d9a8]/70 mb-8">9大4小開三台車同行 • 完整南島15天多點路線（點擊可縮放、切換衛星圖）</p>
     <div class="bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-4">
-      <iframe width="100%" height="550" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-        src="https://maps.google.com/maps?width=100%25&amp;height=550&amp;hl=zh-TW&amp;q=South+Island,+New+Zealand&amp;t=&amp;z=7&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-      </iframe>
+      <iframe width="100%" height="480" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+        src="https://www.google.com/maps/dir/Christchurch,+New+Zealand/Castle+Hill,+New+Zealand/Lake+Tekapo,+New+Zealand/Wanaka,+New+Zealand/Queenstown,+New+Zealand/Mount+Cook+Village,+New+Zealand/Oamaru,+New+Zealand/Akaroa,+New+Zealand/Christchurch+Airport,+New+Zealand"></iframe>
     </div>
-    <p class="text-xs text-center text-[#f0d9a8]/60 mt-6">地圖顯示完整南島路線（基督城 → 提卡波 → Wanaka/皇后鎮 → Mt Cook → 奧瑪魯 → 阿卡羅阿）</p>
+    <p class="text-xs text-center text-[#f0d9a8]/60 mt-6">地圖已包含完整多點路線（基督城 → Castle Hill → 提卡波 → Wanaka → 皇后鎮 → Mt Cook → 奧瑪魯 → 阿卡羅阿 → 返程）</p>
   </section>
 
   <footer class="py-12 text-center border-t border-[#f0d9a8]/10 text-xs tracking-widest gold">
