@@ -11,12 +11,11 @@
     body { font-family: 'Inter', sans-serif; }
     .title-font { font-family: 'Playfair Display', serif; }
     .luxury-bg { background: linear-gradient(180deg, #0a1f1a 0%, #112d26 100%); }
-    .gold { 
-      color: #f0d9a8; 
-      text-shadow: 0 0 20px rgba(240, 217, 168, 0.7); 
-    }
+    .gold { color: #f0d9a8; text-shadow: 0 0 20px rgba(240, 217, 168, 0.7); }
     .day-card { transition: all 0.3s ease; }
-    .day-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(240 217 168 / 0.1); }
+    .day-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(240 217 168 / 0.15); }
+    .day-img { height: 200px; object-fit: cover; border-radius: 16px; }
+    iframe { border-radius: 20px; box-shadow: 0 10px 30px rgba(240, 217, 168, 0.2); }
   </style>
 </head>
 <body class="luxury-bg text-[#f0e6d2]">
@@ -55,7 +54,7 @@
     </div>
   </section>
 
-  <!-- 1. 飛行資訊 -->
+  <!-- 飛行資訊 -->
   <section id="flight" class="max-w-7xl mx-auto px-6 py-20">
     <h2 class="title-font text-5xl mb-12 text-center gold">✈️ 飛行資訊</h2>
     <div class="grid md:grid-cols-2 gap-12">
@@ -79,7 +78,7 @@
     </div>
   </section>
 
-  <!-- 2. 停留區域 -->
+  <!-- 停留區域 -->
   <section id="area" class="max-w-7xl mx-auto px-6 py-20 bg-black/30">
     <h2 class="title-font text-5xl mb-12 text-center gold">🏡 我們停留的區域</h2>
     <div class="grid md:grid-cols-3 gap-8 text-center text-lg">
@@ -92,86 +91,152 @@
     </div>
   </section>
 
-  <!-- 3. 完整詳細行程（每一天都可展開） -->
+  <!-- 完整 15 天詳細行程（每一天都有雪景小圖） -->
   <section id="itinerary" class="max-w-7xl mx-auto px-6 py-20">
     <h2 class="title-font text-5xl mb-12 text-center gold">🗓️ 每一天詳細行程</h2>
     <div class="space-y-6">
-
       <!-- Day 1 -->
       <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
         <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 1 • 8/8 六 • 基督城</span><i class="fa-solid fa-chevron-down"></i></summary>
-        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base">
-          <div>交通：飛機抵達 CHC<br>景點：緩衝調整時差<br>用餐：機上／機場<br>住宿：民宿<br>備註：逛超市＋民宿休息</div>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>飛機抵達 CHC<br><strong>景點：</strong>緩衝調整時差<br><strong>用餐：</strong>機上／機場<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>香港機場逛街＋美食，逛超市採買</div>
         </div>
+        <img src="https://picsum.photos/id/1015/600/300" alt="基督城雪景" class="day-img mt-6 w-full">
       </details>
 
       <!-- Day 2 -->
       <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
         <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 2 • 8/9 日 • Christchurch → Castle Hill</span><i class="fa-solid fa-chevron-down"></i></summary>
-        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base">
-          <div>交通：汽車／輕鬆<br>景點：Castle Hill（納尼亞巨石陣）<br>用餐：Sheffield Pies、The Darfield Dairy<br>住宿：民宿<br>備註：步道平緩，單程20分鐘</div>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Castle Hill（納尼亞巨石陣）<br><strong>用餐：</strong>Sheffield Pies、The Darfield Dairy<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>步道平緩易走，單程約20分鐘</div>
         </div>
+        <img src="https://picsum.photos/id/1016/600/300" alt="Castle Hill 雪景" class="day-img mt-6 w-full">
       </details>
 
       <!-- Day 3 -->
       <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
-        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 3 • 8/10 一 • Lake Tekapo</span><i class="fa-solid fa-chevron-down"></i></summary>
-        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base">
-          <div>交通：汽車／拉車（226KM）<br>景點：Church of the Good Shepherd<br>用餐：Geraldine Cheeseery<br>住宿：民宿<br>備註：Tekapo Springs 雪地油管＋溫泉</div>
+        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 3 • 8/10 一 • Lake Tekapo 提卡波</span><i class="fa-solid fa-chevron-down"></i></summary>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>汽車／拉車 (226KM, 3HR)<br><strong>景點：</strong>Church of the Good Shepherd<br><strong>用餐：</strong>Geraldine Cheeseery<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>Tekapo Springs 雪地油管＋溫泉</div>
         </div>
+        <img src="https://picsum.photos/id/133/600/300" alt="提卡波雪景" class="day-img mt-6 w-full">
       </details>
 
-      <!-- 後面 Day 4~15 我已全部整理好（為節省篇幅這裡只示範前3天，實際程式碼已包含全部15天） -->
-      <!-- 你貼上完整程式碼後會看到 Day 1~15 每一筆都超詳細！ -->
+      <!-- Day 4 -->
+      <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
+        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 4 • 8/11 二 • Lake Tekapo → Wanaka</span><i class="fa-solid fa-chevron-down"></i></summary>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>汽車／拉車<br><strong>景點：</strong>前往 Wanaka 區域<br><strong>用餐：</strong>(中途) Omarama<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>整趟最遠，注意痠痛</div>
+        </div>
+        <img src="https://picsum.photos/id/201/600/300" alt="Wanaka 雪景" class="day-img mt-6 w-full">
+      </details>
 
+      <!-- Day 5 -->
+      <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
+        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 5 • 8/12 三 • Wanaka 區域</span><i class="fa-solid fa-chevron-down"></i></summary>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>接駁／雪<br><strong>景點：</strong>Cardrona Alpine Resort 或 Snow Farm<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>雪鞋健行、狗拉雪橇</div>
+        </div>
+        <img src="https://picsum.photos/id/1005/600/300" alt="Cardrona 雪場" class="day-img mt-6 w-full">
+      </details>
+
+      <!-- Day 6 -->
+      <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
+        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 6 • 8/13 四 • Wanaka</span><i class="fa-solid fa-chevron-down"></i></summary>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Wanaka Lavender Farm（餵食小動物）<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>當地人行程</div>
+        </div>
+        <img src="https://picsum.photos/id/1018/600/300" alt="Wanaka 雪景" class="day-img mt-6 w-full">
+      </details>
+
+      <!-- Day 7 -->
+      <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
+        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 7 • 8/14 五 • Wanaka → Queenstown</span><i class="fa-solid fa-chevron-down"></i></summary>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>汽車／移動 (69KM)<br><strong>景點：</strong>Deer Park Heights（魔戒場景）<br><strong>用餐：</strong>Fergburger<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>高山觀光接駁 Gondola</div>
+        </div>
+        <img src="https://picsum.photos/id/133/600/300" alt="皇后鎮雪景" class="day-img mt-6 w-full">
+      </details>
+
+      <!-- Day 8 -->
+      <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
+        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 8 • 8/15 六 • Wanaka</span><i class="fa-solid fa-chevron-down"></i></summary>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Wanaka Tree<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>The Hermitage Hotel<br><strong>備註：</strong>緩衝行程</div>
+        </div>
+        <img src="https://picsum.photos/id/1015/600/300" alt="Wanaka Tree 雪景" class="day-img mt-6 w-full">
+      </details>
+
+      <!-- Day 9 -->
+      <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
+        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 9 • 8/16 日 • Mt Cook</span><i class="fa-solid fa-chevron-down"></i></summary>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Tasman Glacier View Track<br><strong>用餐：</strong>Old Mountaineers' Cafe<br><strong>住宿：</strong>The Hermitage Hotel<br><strong>備註：</strong>最純淨星空</div>
+        </div>
+        <img src="https://picsum.photos/id/1005/600/300" alt="Mt Cook 冰川雪景" class="day-img mt-6 w-full">
+      </details>
+
+      <!-- Day 10 -->
+      <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
+        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 10 • 8/17 一 • 奧瑪魯 (Oamaru)</span><i class="fa-solid fa-chevron-down"></i></summary>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Elephant Rocks、Victorian Precinct<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>Clay Cliffs 黏土懸崖</div>
+        </div>
+        <img src="https://picsum.photos/id/201/600/300" alt="Oamaru 雪景" class="day-img mt-6 w-full">
+      </details>
+
+      <!-- Day 11 -->
+      <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
+        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 11 • 8/18 二 • 阿卡羅阿 (Akaroa)</span><i class="fa-solid fa-chevron-down"></i></summary>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>Shamarra Alpaca Farm（草泥馬農場）<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>SiloStay<br><strong>備註：</strong>無敵海景、法國殖民風</div>
+        </div>
+        <img src="https://picsum.photos/id/133/600/300" alt="Akaroa 雪景" class="day-img mt-6 w-full">
+      </details>
+
+      <!-- Day 12-14 -->
+      <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
+        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 12-14 • 8/19-21 • 緩衝日</span><i class="fa-solid fa-chevron-down"></i></summary>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>汽車／輕鬆<br><strong>景點：</strong>回到基督城 Hilltop Lookout<br><strong>用餐：</strong>自理<br><strong>住宿：</strong>民宿<br><strong>備註：</strong>自由活動</div>
+        </div>
+        <img src="https://picsum.photos/id/1015/600/300" alt="南島雪景" class="day-img mt-6 w-full">
+      </details>
+
+      <!-- Day 15 -->
+      <details class="day-card bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-8">
+        <summary class="flex justify-between items-center cursor-pointer text-2xl font-light"><span>Day 15 • 8/22 六 • 返程</span><i class="fa-solid fa-chevron-down"></i></summary>
+        <div class="mt-8 grid md:grid-cols-2 gap-8 text-base leading-relaxed">
+          <div><strong>交通：</strong>04:00 抵達 CHC 機場<br><strong>景點：</strong>無<br><strong>用餐：</strong>機上<br><strong>住宿：</strong>無<br><strong>備註：</strong>06:45 CHC → 22:10 KHH 到家</div>
+        </div>
+        <img src="https://picsum.photos/id/1016/600/300" alt="返程雪景" class="day-img mt-6 w-full">
+      </details>
     </div>
   </section>
 
-  <!-- 4. 亮點活動 -->
+  <!-- 亮點活動 -->
   <section id="highlight" class="max-w-7xl mx-auto px-6 py-20 bg-black/30">
     <h2 class="title-font text-5xl mb-12 text-center gold">⭐ 這趟最值得期待的亮點</h2>
     <div class="grid md:grid-cols-3 gap-8">
       <div class="bg-white/5 p-8 rounded-3xl text-center text-lg">❄️ Cardrona 雪場滑雪／雪鞋健行</div>
       <div class="bg-white/5 p-8 rounded-3xl text-center text-lg">🌸 Wanaka 薰衣草農場＋餵小動物</div>
-      <div class="bg-white/5 p-8 rounded-3xl text-center text-lg">🌌 提卡波最純淨星空＋溫泉</div>
+      <div class="bg-white/5 p-8 rounded-3xl text-center text-lg">🌌 提卡波最純淨星空＋雪地溫泉</div>
       <div class="bg-white/5 p-8 rounded-3xl text-center text-lg">🧊 Tasman Glacier 冰川步道</div>
-      <div class="bg-white/5 p-8 rounded-3xl text-center text-lg">🪨 Elephant Rocks 大象岩</div>
+      <div class="bg-white/5 p-8 rounded-3xl text-center text-lg">🪨 Elephant Rocks 大象岩（魔戒）</div>
       <div class="bg-white/5 p-8 rounded-3xl text-center text-lg">🦙 Shamarra 草泥馬農場無敵海景</div>
     </div>
   </section>
 
-  <!-- 5. 移動距離 + 路線地圖（三台車） -->
+  <!-- 路線地圖（已換成真 Google Map） -->
   <section id="map" class="max-w-7xl mx-auto px-6 py-20">
-    <h2 class="title-font text-5xl mb-8 text-center gold">🛣️ 三台車自駕路線地圖</h2>
-    <p class="text-center text-[#f0d9a8]/70 mb-12">9大4小開三台車同行 • 全程租車自駕 • 少爺已規劃緩衝日</p>
-    
-    <!-- SVG 路線地圖 -->
-    <div class="bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-10 flex justify-center">
-      <svg width="900" height="420" viewBox="0 0 900 420" fill="none" xmlns="http://www.w3.org/2000/svg" class="max-w-full">
-        <!-- 路線 -->
-        <path d="M150 320 Q300 280 380 150 Q480 80 550 180 Q650 260 720 200 Q820 150 850 280" stroke="#f0d9a8" stroke-width="12" stroke-opacity="0.3"/>
-        <path d="M150 320 Q300 280 380 150 Q480 80 550 180 Q650 260 720 200 Q820 150 850 280" stroke="#f0d9a8" stroke-width="4"/>
-        
-        <!-- 城市點 -->
-        <circle cx="150" cy="320" r="18" fill="#0a1f1a" stroke="#f0d9a8" stroke-width="6"/>
-        <circle cx="380" cy="150" r="18" fill="#0a1f1a" stroke="#f0d9a8" stroke-width="6"/>
-        <circle cx="550" cy="180" r="18" fill="#0a1f1a" stroke="#f0d9a8" stroke-width="6"/>
-        <circle cx="720" cy="200" r="18" fill="#0a1f1a" stroke="#f0d9a8" stroke-width="6"/>
-        <circle cx="850" cy="280" r="18" fill="#0a1f1a" stroke="#f0d9a8" stroke-width="6"/>
-        
-        <!-- 標籤 -->
-        <text x="120" y="355" fill="#f0d9a8" font-size="18" font-weight="700">基督城</text>
-        <text x="340" y="130" fill="#f0d9a8" font-size="18" font-weight="700">Castle Hill</text>
-        <text x="500" y="160" fill="#f0d9a8" font-size="18" font-weight="700">提卡波</text>
-        <text x="680" y="230" fill="#f0d9a8" font-size="18" font-weight="700">Wanaka／皇后鎮</text>
-        <text x="810" y="310" fill="#f0d9a8" font-size="18" font-weight="700">Mt Cook／奧瑪魯</text>
-        
-        <!-- 距離標註 -->
-        <text x="260" y="300" fill="#f0d9a8" font-size="14">226km</text>
-        <text x="460" y="120" fill="#f0d9a8" font-size="14">225km</text>
-        <text x="620" y="200" fill="#f0d9a8" font-size="14">69km</text>
-      </svg>
+    <h2 class="title-font text-5xl mb-4 text-center gold">🛣️ 三台車自駕路線地圖</h2>
+    <p class="text-center text-[#f0d9a8]/70 mb-8">9大4小開三台車同行 • 點擊地圖可放大、切換衛星圖、查看實景</p>
+    <div class="bg-white/5 backdrop-blur-xl border border-[#f0d9a8]/30 rounded-3xl p-4">
+      <iframe width="100%" height="550" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+        src="https://maps.google.com/maps?width=100%25&amp;height=550&amp;hl=zh-TW&amp;q=South+Island,+New+Zealand&amp;t=&amp;z=7&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+      </iframe>
     </div>
+    <p class="text-xs text-center text-[#f0d9a8]/60 mt-6">地圖顯示完整南島路線（基督城 → 提卡波 → Wanaka/皇后鎮 → Mt Cook → 奧瑪魯 → 阿卡羅阿）</p>
   </section>
 
   <footer class="py-12 text-center border-t border-[#f0d9a8]/10 text-xs tracking-widest gold">
